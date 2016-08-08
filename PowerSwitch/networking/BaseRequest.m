@@ -33,6 +33,7 @@
 #import "JsonInit.h"
 
 @interface BaseRequest ()
+@property(nonatomic, strong, nonnull) NSURL *url;
 @property(nonatomic, strong, nullable) NSMutableURLRequest *request;
 @end
 
@@ -125,8 +126,4 @@
     return [self executeWithUrlSession:[NSURLSession sharedSession] returnClass:class error:error];
 }
 
-- (void)setAuthorizationHeader:(nonnull OauthToken *)oauthToken {
-    NSString *authValue = [NSString stringWithFormat:@"%@ %@", oauthToken.tokenType, oauthToken.accessToken];
-    [self.request setValue:authValue forHTTPHeaderField:@"Authorization"];
-}
 @end

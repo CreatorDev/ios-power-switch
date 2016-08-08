@@ -33,7 +33,6 @@
 #import "OauthToken.h"
 
 @interface BaseRequest : NSObject
-@property(nonatomic, strong, nonnull) NSURL *url;
 @property(nonatomic, strong, nullable) OauthToken *oauthToken;
 - (nonnull instancetype)initWithUrl:(nonnull NSURL *)url;
 - (nullable id)executeWithSharedUrlSessionAndReturnClass:(nullable Class)class
