@@ -36,6 +36,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[GlobalStyle class] setupAppearance];
+    
+    NSURL *launchUrl = launchOptions[UIApplicationLaunchOptionsURLKey];
+    if (launchUrl) {
+        return [self.dataApi processOpenUrl:launchUrl];
+    }
     return YES;
 }
 
@@ -51,6 +56,10 @@
         _dataApi = [DataApi new];
     }
     return _dataApi;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    return [self.dataApi processOpenUrl:url];
 }
 
 @end

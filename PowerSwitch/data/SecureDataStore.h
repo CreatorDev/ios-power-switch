@@ -30,14 +30,12 @@
  */
 
 @import Foundation;
+#import "AccessKey.h"
 
 @interface SecureDataStore : NSObject
-+ (void)storeUsername:(nonnull NSString *)username password:(nonnull NSString *)password;
-+ (void)cleanUsernamePassword;
-+ (nullable NSString *)readUsername;
-+ (nullable NSString *)readPassword;
-+ (void)storeDeviceServerAccessKey:(nonnull NSString *)key secret:(nonnull NSString *)secret;
-+ (void)cleanDeviceServerAccessKeySecret;
++ (void)storeDeviceServerAccessKey:(nonnull AccessKey *)accessKey;
++ (void)cleanDeviceServerAccessKey;
++ (nullable NSString *)readDeviceServerAccessName;
 + (nullable NSString *)readDeviceServerAccessKey;
 + (nullable NSString *)readDeviceServerSecret;
 @end

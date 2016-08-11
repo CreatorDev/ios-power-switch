@@ -29,11 +29,20 @@
  *
  */
 
-@import Foundation;
-#import "AccessKeys.h"
+#import "DataStore.h"
 
-@interface AccountsServerApi : NSObject
-- (nullable AccessKeys *)loginWithUsername:(nonnull NSString *)username
-                                  password:(nonnull NSString *)password
-                                     error:(NSError * _Nullable * _Nullable)error;
+@implementation DataStore
+
++ (void)storeKeepMeSignedIn:(BOOL)on {
+    [[NSUserDefaults standardUserDefaults] setBool:on forKey:@"LoginKeepMeSignedIn"];
+}
+
++ (void)cleanKeepMeSignedIn {
+    [[self class] storeKeepMeSignedIn:NO];
+}
+
++ (BOOL)readKeepMeSignedIn {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"LoginKeepMeSignedIn"];
+}
+
 @end

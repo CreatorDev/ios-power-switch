@@ -40,10 +40,9 @@ typedef void(^RequestGatewaysSuccessBlock)(Clients * _Nonnull);
 typedef void(^RelayDevicesSuccessBlock)(NSArray<RelayDevice *> * _Nonnull);
 
 @interface DataApi : NSObject
-- (void)loginWithUsername:(nonnull NSString *)username
-                 password:(nonnull NSString *)password
-                  success:(nullable SuccessBlock)success
-                  failure:(nullable FailureBlock)failure;
+- (BOOL)processOpenUrl:(nonnull NSURL *)url;
+- (void)loginWithSuccess:(nullable SuccessBlock)success
+                 failure:(nullable FailureBlock)failure;
 
 - (BOOL)isSilentLoginStartPossible;
 - (void)silentLoginWithSuccess:(nullable SuccessBlock)success

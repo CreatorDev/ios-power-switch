@@ -29,46 +29,13 @@
  *
  */
 
-#import "Developer.h"
+#import "BaseRequest.h"
+#import "OauthToken.h"
 
-@implementation Developer
-
-- (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"Developer: (username: %@, email: %@)", self.username, self.email];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, [super description]];
-    }
-    
-    return mainStr;
-}
-
-#pragma mark - JsonInit protocol
-
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
-    if (self) {
-        if (NO == [self parseDeveloperJson:json]) {
-            self = nil;
-        }
-    }
-    return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseDeveloperJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"Username"] isKindOfClass:[NSString class]] &&
-            [json[@"Email"] isKindOfClass:[NSString class]])
-        {
-            self.username = json[@"Username"];
-            self.email = json[@"Email"];
-        } else {
-            NSLog(@"%@ In Developer, wrong type for one of Username/Email.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
-}
-
+@interface POSTRequest : BaseRequest
++ (nullable POSTRequest *)POSTRequestWithUrl:(nonnull NSURL *)url
+                                      accept:(nullable NSString *)accept
+                                 contentType:(nullable NSString *)contentType
+                                        body:(nullable NSData *)body
+                                        auth:(nullable OauthToken *)oauthToken;
 @end
