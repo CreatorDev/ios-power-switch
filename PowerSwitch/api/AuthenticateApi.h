@@ -29,11 +29,12 @@
  *
  */
 
-@import UIKit;
+@import Foundation;
+#import "AccessKey.h"
 
-IB_DESIGNABLE
-@interface CreatorTextField : UITextField
-@property (nonatomic, strong) IBInspectable UIColor *creatorPrimaryColor;
-@property (nonatomic, strong) IBInspectable UIColor *creatorPlaceholderColor;
-- (void)markError:(BOOL)error;
+typedef void(^LoginCompletionBlock)(AccessKey * _Nullable, NSError * _Nullable);
+
+@interface AuthenticateApi : NSObject
+- (BOOL)processOpenUrl:(nonnull NSURL *)url;
+- (void)loginWithCompletionHandler:(nullable LoginCompletionBlock)completion;
 @end

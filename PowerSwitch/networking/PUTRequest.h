@@ -34,6 +34,7 @@
 
 @interface PUTRequest : BaseRequest
 + (nullable PUTRequest *)PUTRequestWithUrl:(nonnull NSURL *)url
+                               contentType:(nullable NSString *)contentType
                                       body:(nullable NSData *)body
                                       auth:(nullable OauthToken *)oauthToken;
 @end

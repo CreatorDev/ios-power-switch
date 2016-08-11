@@ -29,9 +29,27 @@
  *
  */
 
-#import "Hateoas.h"
-#import "AccessKey.h"
+#import "POSTRequest.h"
 
-@interface AccessKeys : Hateoas
-@property(nonatomic, strong, nonnull) NSArray<AccessKey *> *items;
+@interface BaseRequest ()
+@property(nonatomic, strong, nullable) NSMutableURLRequest *request;
+@end
+
+@implementation POSTRequest
+
++ (nullable POSTRequest *)POSTRequestWithUrl:(nonnull NSURL *)url
+                                      accept:(nullable NSString *)accept
+                                 contentType:(nullable NSString *)contentType
+                                        body:(nullable NSData *)body
+                                        auth:(nullable OauthToken *)oauthToken
+{
+    POSTRequest *postRequest = [[POSTRequest alloc] initWithUrl:url];
+    postRequest.request.HTTPMethod = @"POST";
+    postRequest.request.HTTPBody = body;
+    [postRequest.request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [postRequest.request setValue:accept forHTTPHeaderField:@"Accept"];
+    postRequest.oauthToken = oauthToken;
+    return postRequest;
+}
+
 @end

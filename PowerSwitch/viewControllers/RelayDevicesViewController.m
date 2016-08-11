@@ -93,7 +93,7 @@
     RelayDevice *relayDevice = [self relayDeviceWithInstanceId:instanceId];
     if (relayDevice) {
         [self.dataApi setRelayDeviceState:relayDevice newValue:state success:nil failure:^(NSError * _Nullable error) {
-             NSLog(@"device state set failure: %@", error);
+             NSLog(@"ERROR setting device state: %@", error);
             [self requestRelayDevices];
          }];
     }

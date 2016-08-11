@@ -12,21 +12,28 @@
 		770CC1801D460ECA0088910E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770CC17E1D460ECA0088910E /* Main.storyboard */; };
 		770CC1821D460ECA0088910E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1811D460ECA0088910E /* Assets.xcassets */; };
 		770CC1851D460ECA0088910E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1831D460ECA0088910E /* LaunchScreen.storyboard */; };
-		770CC1BA1D4611E30088910E /* AccountsServerApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 770CC1B71D4611E30088910E /* AccountsServerApi.m */; };
 		770CC1BB1D4611E30088910E /* DeviceServerApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 770CC1B91D4611E30088910E /* DeviceServerApi.m */; };
-		770CC1BE1D4611F20088910E /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 770CC1BD1D4611F20088910E /* Link.m */; };
-		770CC1C11D4612B70088910E /* Hateoas.m in Sources */ = {isa = PBXBuildFile; fileRef = 770CC1C01D4612B70088910E /* Hateoas.m */; };
-		770CC1C41D461B950088910E /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 770CC1C31D461B950088910E /* Api.m */; };
-		771AD24E1D4B318700997739 /* IPSOInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AD24D1D4B318700997739 /* IPSOInstance.m */; };
-		771AD2511D4B32CF00997739 /* Instances.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AD2501D4B32CF00997739 /* Instances.m */; };
 		771AD2541D4B503B00997739 /* PUTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 771AD2531D4B503B00997739 /* PUTRequest.m */; };
 		772CA1161D48E280006ECAA2 /* DataApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CA1151D48E280006ECAA2 /* DataApi.m */; };
-		772CA1271D48EF03006ECAA2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 772CA1261D48EF03006ECAA2 /* Login.storyboard */; };
+		7740EB0E1D5B320F0074D019 /* AuthenticateApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 7740EB0D1D5B320F0074D019 /* AuthenticateApi.m */; };
+		7740EB111D5B32200074D019 /* POSTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7740EB101D5B32200074D019 /* POSTRequest.m */; };
 		774340F11D49FE69000D6FF2 /* SecureDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 774340F01D49FE69000D6FF2 /* SecureDataStore.m */; };
-		774340FA1D4A3131000D6FF2 /* ObjectType.m in Sources */ = {isa = PBXBuildFile; fileRef = 774340F91D4A3131000D6FF2 /* ObjectType.m */; };
-		774340FD1D4A313F000D6FF2 /* ObjectTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 774340FC1D4A313F000D6FF2 /* ObjectTypes.m */; };
-		774341001D4A4855000D6FF2 /* IPSODigitalOutputInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 774340FF1D4A4855000D6FF2 /* IPSODigitalOutputInstance.m */; };
 		774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 774341021D4A4CFE000D6FF2 /* RelayDevice.m */; };
+		77447A641D5B4F36006AF506 /* AccessKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A4A1D5B4F36006AF506 /* AccessKey.m */; };
+		77447A651D5B4F36006AF506 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A4C1D5B4F36006AF506 /* Api.m */; };
+		77447A661D5B4F36006AF506 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A4E1D5B4F36006AF506 /* Client.m */; };
+		77447A671D5B4F36006AF506 /* Clients.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A501D5B4F36006AF506 /* Clients.m */; };
+		77447A681D5B4F36006AF506 /* Hateoas.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A521D5B4F36006AF506 /* Hateoas.m */; };
+		77447A691D5B4F36006AF506 /* Instances.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A541D5B4F36006AF506 /* Instances.m */; };
+		77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */; };
+		77447A6B1D5B4F36006AF506 /* IPSOInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A581D5B4F36006AF506 /* IPSOInstance.m */; };
+		77447A6C1D5B4F36006AF506 /* Link.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A5B1D5B4F36006AF506 /* Link.m */; };
+		77447A6D1D5B4F36006AF506 /* OauthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A5D1D5B4F36006AF506 /* OauthToken.m */; };
+		77447A6E1D5B4F36006AF506 /* ObjectType.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A5F1D5B4F36006AF506 /* ObjectType.m */; };
+		77447A6F1D5B4F36006AF506 /* ObjectTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A611D5B4F36006AF506 /* ObjectTypes.m */; };
+		77447A701D5B4F36006AF506 /* PageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A631D5B4F36006AF506 /* PageInfo.m */; };
+		77447A731D5B51BD006AF506 /* DataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A721D5B51BD006AF506 /* DataStore.m */; };
+		77447A741D5B6DE7006AF506 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77447A761D5B6DE7006AF506 /* Login.storyboard */; };
 		7744A5171D547BCD0000E18D /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7744A5161D547BCD0000E18D /* AppData.m */; };
 		774748FA1D54C03300CC37E1 /* CreatorSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 774748F91D54C03300CC37E1 /* CreatorSwitch.m */; };
 		775D54F51D4F2E2800216033 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775D54E31D4F2E2800216033 /* Roboto-Black.ttf */; };
@@ -48,14 +55,8 @@
 		775D55051D4F2E2800216033 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775D54F31D4F2E2800216033 /* RobotoCondensed-LightItalic.ttf */; };
 		775D55061D4F2E2800216033 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775D54F41D4F2E2800216033 /* RobotoCondensed-Regular.ttf */; };
 		775D550B1D4F390300216033 /* GlobalStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 775D550A1D4F390300216033 /* GlobalStyle.m */; };
-		77645F051D47750000FB09B4 /* PageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 77645F041D47750000FB09B4 /* PageInfo.m */; };
-		77645F081D47768D00FB09B4 /* AccessKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 77645F071D47768D00FB09B4 /* AccessKey.m */; };
-		77645F0B1D4777F300FB09B4 /* AccessKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 77645F0A1D4777F300FB09B4 /* AccessKeys.m */; };
-		779834991D4754F3007042F6 /* Developer.m in Sources */ = {isa = PBXBuildFile; fileRef = 779834981D4754F3007042F6 /* Developer.m */; };
-		77B0C6101D465D5F006AAAE5 /* OauthToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 77B0C60F1D465D5F006AAAE5 /* OauthToken.m */; };
 		77CA80D81D50BF93007AE6E3 /* CreatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80D31D50BF93007AE6E3 /* CreatorButton.m */; };
 		77CA80D91D50BF93007AE6E3 /* CreatorLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80D51D50BF93007AE6E3 /* CreatorLinkButton.m */; };
-		77CA80DA1D50BF93007AE6E3 /* CreatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80D71D50BF93007AE6E3 /* CreatorTextField.m */; };
 		77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */; };
 		77CA80E51D50BFF2007AE6E3 /* GatewaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E01D50BFF2007AE6E3 /* GatewaysTableViewController.m */; };
 		77CA80E61D50BFF2007AE6E3 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E21D50BFF2007AE6E3 /* LoginViewController.m */; };
@@ -65,8 +66,6 @@
 		77D45CF81D489F88009E4566 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D45CF71D489F88009E4566 /* BaseRequest.m */; };
 		77D45CFD1D48A263009E4566 /* GETRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D45CFC1D48A263009E4566 /* GETRequest.m */; };
 		77D45D001D48A281009E4566 /* OauthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D45CFF1D48A281009E4566 /* OauthRequest.m */; };
-		77D45D031D48BA7C009E4566 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D45D021D48BA7C009E4566 /* Client.m */; };
-		77D45D061D48BB97009E4566 /* Clients.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D45D051D48BB97009E4566 /* Clients.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,35 +77,50 @@
 		770CC1811D460ECA0088910E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770CC1841D460ECA0088910E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770CC1861D460ECA0088910E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770CC1B61D4611E30088910E /* AccountsServerApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountsServerApi.h; path = api/AccountsServerApi.h; sourceTree = "<group>"; };
-		770CC1B71D4611E30088910E /* AccountsServerApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountsServerApi.m; path = api/AccountsServerApi.m; sourceTree = "<group>"; };
 		770CC1B81D4611E30088910E /* DeviceServerApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceServerApi.h; path = api/DeviceServerApi.h; sourceTree = "<group>"; };
 		770CC1B91D4611E30088910E /* DeviceServerApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceServerApi.m; path = api/DeviceServerApi.m; sourceTree = "<group>"; };
-		770CC1BC1D4611F20088910E /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Link.h; path = heteoas/Link.h; sourceTree = "<group>"; };
-		770CC1BD1D4611F20088910E /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Link.m; path = heteoas/Link.m; sourceTree = "<group>"; };
-		770CC1BF1D4612B70088910E /* Hateoas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hateoas.h; path = heteoas/Hateoas.h; sourceTree = "<group>"; };
-		770CC1C01D4612B70088910E /* Hateoas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hateoas.m; path = heteoas/Hateoas.m; sourceTree = "<group>"; };
-		770CC1C21D461B950088910E /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Api.h; path = heteoas/Api.h; sourceTree = "<group>"; };
-		770CC1C31D461B950088910E /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Api.m; path = heteoas/Api.m; sourceTree = "<group>"; };
-		771AD24C1D4B318700997739 /* IPSOInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSOInstance.h; path = heteoas/IPSOInstance.h; sourceTree = "<group>"; };
-		771AD24D1D4B318700997739 /* IPSOInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSOInstance.m; path = heteoas/IPSOInstance.m; sourceTree = "<group>"; };
-		771AD24F1D4B32CF00997739 /* Instances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instances.h; path = heteoas/Instances.h; sourceTree = "<group>"; };
-		771AD2501D4B32CF00997739 /* Instances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instances.m; path = heteoas/Instances.m; sourceTree = "<group>"; };
 		771AD2521D4B503B00997739 /* PUTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PUTRequest.h; path = networking/PUTRequest.h; sourceTree = "<group>"; };
 		771AD2531D4B503B00997739 /* PUTRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PUTRequest.m; path = networking/PUTRequest.m; sourceTree = "<group>"; };
 		772CA1141D48E280006ECAA2 /* DataApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataApi.h; path = api/DataApi.h; sourceTree = "<group>"; };
 		772CA1151D48E280006ECAA2 /* DataApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataApi.m; path = api/DataApi.m; sourceTree = "<group>"; };
-		772CA1261D48EF03006ECAA2 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		7740EB0C1D5B320F0074D019 /* AuthenticateApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthenticateApi.h; path = api/AuthenticateApi.h; sourceTree = "<group>"; };
+		7740EB0D1D5B320F0074D019 /* AuthenticateApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthenticateApi.m; path = api/AuthenticateApi.m; sourceTree = "<group>"; };
+		7740EB0F1D5B32200074D019 /* POSTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = POSTRequest.h; path = networking/POSTRequest.h; sourceTree = "<group>"; };
+		7740EB101D5B32200074D019 /* POSTRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = POSTRequest.m; path = networking/POSTRequest.m; sourceTree = "<group>"; };
 		774340EF1D49FE69000D6FF2 /* SecureDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecureDataStore.h; path = data/SecureDataStore.h; sourceTree = "<group>"; };
 		774340F01D49FE69000D6FF2 /* SecureDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecureDataStore.m; path = data/SecureDataStore.m; sourceTree = "<group>"; };
-		774340F81D4A3131000D6FF2 /* ObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectType.h; path = heteoas/ObjectType.h; sourceTree = "<group>"; };
-		774340F91D4A3131000D6FF2 /* ObjectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectType.m; path = heteoas/ObjectType.m; sourceTree = "<group>"; };
-		774340FB1D4A313F000D6FF2 /* ObjectTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectTypes.h; path = heteoas/ObjectTypes.h; sourceTree = "<group>"; };
-		774340FC1D4A313F000D6FF2 /* ObjectTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectTypes.m; path = heteoas/ObjectTypes.m; sourceTree = "<group>"; };
-		774340FE1D4A4855000D6FF2 /* IPSODigitalOutputInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSODigitalOutputInstance.h; path = heteoas/IPSODigitalOutputInstance.h; sourceTree = "<group>"; };
-		774340FF1D4A4855000D6FF2 /* IPSODigitalOutputInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSODigitalOutputInstance.m; path = heteoas/IPSODigitalOutputInstance.m; sourceTree = "<group>"; };
 		774341011D4A4CFE000D6FF2 /* RelayDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayDevice.h; path = data/RelayDevice.h; sourceTree = "<group>"; };
 		774341021D4A4CFE000D6FF2 /* RelayDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelayDevice.m; path = data/RelayDevice.m; sourceTree = "<group>"; };
+		77447A491D5B4F36006AF506 /* AccessKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessKey.h; path = hateoas/AccessKey.h; sourceTree = "<group>"; };
+		77447A4A1D5B4F36006AF506 /* AccessKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessKey.m; path = hateoas/AccessKey.m; sourceTree = "<group>"; };
+		77447A4B1D5B4F36006AF506 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Api.h; path = hateoas/Api.h; sourceTree = "<group>"; };
+		77447A4C1D5B4F36006AF506 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Api.m; path = hateoas/Api.m; sourceTree = "<group>"; };
+		77447A4D1D5B4F36006AF506 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Client.h; path = hateoas/Client.h; sourceTree = "<group>"; };
+		77447A4E1D5B4F36006AF506 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Client.m; path = hateoas/Client.m; sourceTree = "<group>"; };
+		77447A4F1D5B4F36006AF506 /* Clients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clients.h; path = hateoas/Clients.h; sourceTree = "<group>"; };
+		77447A501D5B4F36006AF506 /* Clients.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Clients.m; path = hateoas/Clients.m; sourceTree = "<group>"; };
+		77447A511D5B4F36006AF506 /* Hateoas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hateoas.h; path = hateoas/Hateoas.h; sourceTree = "<group>"; };
+		77447A521D5B4F36006AF506 /* Hateoas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Hateoas.m; path = hateoas/Hateoas.m; sourceTree = "<group>"; };
+		77447A531D5B4F36006AF506 /* Instances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instances.h; path = hateoas/Instances.h; sourceTree = "<group>"; };
+		77447A541D5B4F36006AF506 /* Instances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instances.m; path = hateoas/Instances.m; sourceTree = "<group>"; };
+		77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSODigitalOutputInstance.h; path = hateoas/IPSODigitalOutputInstance.h; sourceTree = "<group>"; };
+		77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSODigitalOutputInstance.m; path = hateoas/IPSODigitalOutputInstance.m; sourceTree = "<group>"; };
+		77447A571D5B4F36006AF506 /* IPSOInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSOInstance.h; path = hateoas/IPSOInstance.h; sourceTree = "<group>"; };
+		77447A581D5B4F36006AF506 /* IPSOInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSOInstance.m; path = hateoas/IPSOInstance.m; sourceTree = "<group>"; };
+		77447A591D5B4F36006AF506 /* JsonInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonInit.h; path = hateoas/JsonInit.h; sourceTree = "<group>"; };
+		77447A5A1D5B4F36006AF506 /* Link.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Link.h; path = hateoas/Link.h; sourceTree = "<group>"; };
+		77447A5B1D5B4F36006AF506 /* Link.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Link.m; path = hateoas/Link.m; sourceTree = "<group>"; };
+		77447A5C1D5B4F36006AF506 /* OauthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OauthToken.h; path = hateoas/OauthToken.h; sourceTree = "<group>"; };
+		77447A5D1D5B4F36006AF506 /* OauthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OauthToken.m; path = hateoas/OauthToken.m; sourceTree = "<group>"; };
+		77447A5E1D5B4F36006AF506 /* ObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectType.h; path = hateoas/ObjectType.h; sourceTree = "<group>"; };
+		77447A5F1D5B4F36006AF506 /* ObjectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectType.m; path = hateoas/ObjectType.m; sourceTree = "<group>"; };
+		77447A601D5B4F36006AF506 /* ObjectTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectTypes.h; path = hateoas/ObjectTypes.h; sourceTree = "<group>"; };
+		77447A611D5B4F36006AF506 /* ObjectTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectTypes.m; path = hateoas/ObjectTypes.m; sourceTree = "<group>"; };
+		77447A621D5B4F36006AF506 /* PageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageInfo.h; path = hateoas/PageInfo.h; sourceTree = "<group>"; };
+		77447A631D5B4F36006AF506 /* PageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageInfo.m; path = hateoas/PageInfo.m; sourceTree = "<group>"; };
+		77447A711D5B51BC006AF506 /* DataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataStore.h; path = data/DataStore.h; sourceTree = "<group>"; };
+		77447A721D5B51BD006AF506 /* DataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataStore.m; path = data/DataStore.m; sourceTree = "<group>"; };
+		77447A751D5B6DE7006AF506 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		7744A5151D547BCD0000E18D /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppData.h; path = data/AppData.h; sourceTree = "<group>"; };
 		7744A5161D547BCD0000E18D /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppData.m; path = data/AppData.m; sourceTree = "<group>"; };
 		774748F81D54C03300CC37E1 /* CreatorSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorSwitch.h; path = views/CreatorSwitch.h; sourceTree = "<group>"; };
@@ -131,22 +145,10 @@
 		775D54F41D4F2E2800216033 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Regular.ttf"; path = "fonts/RobotoTTF/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		775D55091D4F390300216033 /* GlobalStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStyle.h; sourceTree = "<group>"; };
 		775D550A1D4F390300216033 /* GlobalStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStyle.m; sourceTree = "<group>"; };
-		77645F031D47750000FB09B4 /* PageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageInfo.h; path = heteoas/PageInfo.h; sourceTree = "<group>"; };
-		77645F041D47750000FB09B4 /* PageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageInfo.m; path = heteoas/PageInfo.m; sourceTree = "<group>"; };
-		77645F061D47768D00FB09B4 /* AccessKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessKey.h; path = heteoas/AccessKey.h; sourceTree = "<group>"; };
-		77645F071D47768D00FB09B4 /* AccessKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessKey.m; path = heteoas/AccessKey.m; sourceTree = "<group>"; };
-		77645F091D4777F300FB09B4 /* AccessKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccessKeys.h; path = heteoas/AccessKeys.h; sourceTree = "<group>"; };
-		77645F0A1D4777F300FB09B4 /* AccessKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccessKeys.m; path = heteoas/AccessKeys.m; sourceTree = "<group>"; };
-		779834971D4754F3007042F6 /* Developer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Developer.h; path = heteoas/Developer.h; sourceTree = "<group>"; };
-		779834981D4754F3007042F6 /* Developer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Developer.m; path = heteoas/Developer.m; sourceTree = "<group>"; };
-		77B0C60E1D465D5F006AAAE5 /* OauthToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OauthToken.h; path = heteoas/OauthToken.h; sourceTree = "<group>"; };
-		77B0C60F1D465D5F006AAAE5 /* OauthToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OauthToken.m; path = heteoas/OauthToken.m; sourceTree = "<group>"; };
 		77CA80D21D50BF93007AE6E3 /* CreatorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorButton.h; path = views/CreatorButton.h; sourceTree = "<group>"; };
 		77CA80D31D50BF93007AE6E3 /* CreatorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatorButton.m; path = views/CreatorButton.m; sourceTree = "<group>"; };
 		77CA80D41D50BF93007AE6E3 /* CreatorLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorLinkButton.h; path = views/CreatorLinkButton.h; sourceTree = "<group>"; };
 		77CA80D51D50BF93007AE6E3 /* CreatorLinkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatorLinkButton.m; path = views/CreatorLinkButton.m; sourceTree = "<group>"; };
-		77CA80D61D50BF93007AE6E3 /* CreatorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorTextField.h; path = views/CreatorTextField.h; sourceTree = "<group>"; };
-		77CA80D71D50BF93007AE6E3 /* CreatorTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatorTextField.m; path = views/CreatorTextField.m; sourceTree = "<group>"; };
 		77CA80DC1D50BFCA007AE6E3 /* GatewayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GatewayTableViewCell.h; path = views/GatewayTableViewCell.h; sourceTree = "<group>"; };
 		77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GatewayTableViewCell.m; path = views/GatewayTableViewCell.m; sourceTree = "<group>"; };
 		77CA80DF1D50BFF2007AE6E3 /* GatewaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GatewaysTableViewController.h; path = viewControllers/GatewaysTableViewController.h; sourceTree = "<group>"; };
@@ -161,15 +163,10 @@
 		77CA812B1D520E9F007AE6E3 /* OauthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OauthManager.m; path = networking/OauthManager.m; sourceTree = "<group>"; };
 		77D45CF61D489F87009E4566 /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseRequest.h; path = networking/BaseRequest.h; sourceTree = "<group>"; };
 		77D45CF71D489F88009E4566 /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseRequest.m; path = networking/BaseRequest.m; sourceTree = "<group>"; };
-		77D45CFA1D48A13F009E4566 /* JsonInit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JsonInit.h; path = heteoas/JsonInit.h; sourceTree = "<group>"; };
 		77D45CFB1D48A263009E4566 /* GETRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GETRequest.h; path = networking/GETRequest.h; sourceTree = "<group>"; };
 		77D45CFC1D48A263009E4566 /* GETRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GETRequest.m; path = networking/GETRequest.m; sourceTree = "<group>"; };
 		77D45CFE1D48A281009E4566 /* OauthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OauthRequest.h; path = networking/OauthRequest.h; sourceTree = "<group>"; };
 		77D45CFF1D48A281009E4566 /* OauthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OauthRequest.m; path = networking/OauthRequest.m; sourceTree = "<group>"; };
-		77D45D011D48BA7C009E4566 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Client.h; path = heteoas/Client.h; sourceTree = "<group>"; };
-		77D45D021D48BA7C009E4566 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Client.m; path = heteoas/Client.m; sourceTree = "<group>"; };
-		77D45D041D48BB97009E4566 /* Clients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clients.h; path = heteoas/Clients.h; sourceTree = "<group>"; };
-		77D45D051D48BB97009E4566 /* Clients.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Clients.m; path = heteoas/Clients.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +201,7 @@
 			children = (
 				770CC1781D460ECA0088910E /* AppDelegate.h */,
 				770CC1791D460ECA0088910E /* AppDelegate.m */,
-				772CA1261D48EF03006ECAA2 /* Login.storyboard */,
+				77447A761D5B6DE7006AF506 /* Login.storyboard */,
 				770CC17E1D460ECA0088910E /* Main.storyboard */,
 				770CC1811D460ECA0088910E /* Assets.xcassets */,
 				770CC1831D460ECA0088910E /* LaunchScreen.storyboard */,
@@ -234,8 +231,8 @@
 		770CC1AE1D460F9E0088910E /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				770CC1B61D4611E30088910E /* AccountsServerApi.h */,
-				770CC1B71D4611E30088910E /* AccountsServerApi.m */,
+				7740EB0C1D5B320F0074D019 /* AuthenticateApi.h */,
+				7740EB0D1D5B320F0074D019 /* AuthenticateApi.m */,
 				770CC1B81D4611E30088910E /* DeviceServerApi.h */,
 				770CC1B91D4611E30088910E /* DeviceServerApi.m */,
 				772CA1141D48E280006ECAA2 /* DataApi.h */,
@@ -247,37 +244,33 @@
 		770CC1B51D4611BE0088910E /* Hateoas */ = {
 			isa = PBXGroup;
 			children = (
-				77645F061D47768D00FB09B4 /* AccessKey.h */,
-				77645F071D47768D00FB09B4 /* AccessKey.m */,
-				77645F091D4777F300FB09B4 /* AccessKeys.h */,
-				77645F0A1D4777F300FB09B4 /* AccessKeys.m */,
-				770CC1C21D461B950088910E /* Api.h */,
-				770CC1C31D461B950088910E /* Api.m */,
-				77D45D011D48BA7C009E4566 /* Client.h */,
-				77D45D021D48BA7C009E4566 /* Client.m */,
-				77D45D041D48BB97009E4566 /* Clients.h */,
-				77D45D051D48BB97009E4566 /* Clients.m */,
-				779834971D4754F3007042F6 /* Developer.h */,
-				779834981D4754F3007042F6 /* Developer.m */,
-				770CC1BF1D4612B70088910E /* Hateoas.h */,
-				770CC1C01D4612B70088910E /* Hateoas.m */,
-				771AD24F1D4B32CF00997739 /* Instances.h */,
-				771AD2501D4B32CF00997739 /* Instances.m */,
-				771AD24C1D4B318700997739 /* IPSOInstance.h */,
-				771AD24D1D4B318700997739 /* IPSOInstance.m */,
-				774340FE1D4A4855000D6FF2 /* IPSODigitalOutputInstance.h */,
-				774340FF1D4A4855000D6FF2 /* IPSODigitalOutputInstance.m */,
-				77D45CFA1D48A13F009E4566 /* JsonInit.h */,
-				770CC1BC1D4611F20088910E /* Link.h */,
-				770CC1BD1D4611F20088910E /* Link.m */,
-				774340F81D4A3131000D6FF2 /* ObjectType.h */,
-				774340F91D4A3131000D6FF2 /* ObjectType.m */,
-				774340FB1D4A313F000D6FF2 /* ObjectTypes.h */,
-				774340FC1D4A313F000D6FF2 /* ObjectTypes.m */,
-				77B0C60E1D465D5F006AAAE5 /* OauthToken.h */,
-				77B0C60F1D465D5F006AAAE5 /* OauthToken.m */,
-				77645F031D47750000FB09B4 /* PageInfo.h */,
-				77645F041D47750000FB09B4 /* PageInfo.m */,
+				77447A491D5B4F36006AF506 /* AccessKey.h */,
+				77447A4A1D5B4F36006AF506 /* AccessKey.m */,
+				77447A4B1D5B4F36006AF506 /* Api.h */,
+				77447A4C1D5B4F36006AF506 /* Api.m */,
+				77447A4D1D5B4F36006AF506 /* Client.h */,
+				77447A4E1D5B4F36006AF506 /* Client.m */,
+				77447A4F1D5B4F36006AF506 /* Clients.h */,
+				77447A501D5B4F36006AF506 /* Clients.m */,
+				77447A511D5B4F36006AF506 /* Hateoas.h */,
+				77447A521D5B4F36006AF506 /* Hateoas.m */,
+				77447A531D5B4F36006AF506 /* Instances.h */,
+				77447A541D5B4F36006AF506 /* Instances.m */,
+				77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */,
+				77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */,
+				77447A571D5B4F36006AF506 /* IPSOInstance.h */,
+				77447A581D5B4F36006AF506 /* IPSOInstance.m */,
+				77447A591D5B4F36006AF506 /* JsonInit.h */,
+				77447A5A1D5B4F36006AF506 /* Link.h */,
+				77447A5B1D5B4F36006AF506 /* Link.m */,
+				77447A5C1D5B4F36006AF506 /* OauthToken.h */,
+				77447A5D1D5B4F36006AF506 /* OauthToken.m */,
+				77447A5E1D5B4F36006AF506 /* ObjectType.h */,
+				77447A5F1D5B4F36006AF506 /* ObjectType.m */,
+				77447A601D5B4F36006AF506 /* ObjectTypes.h */,
+				77447A611D5B4F36006AF506 /* ObjectTypes.m */,
+				77447A621D5B4F36006AF506 /* PageInfo.h */,
+				77447A631D5B4F36006AF506 /* PageInfo.m */,
 			);
 			name = Hateoas;
 			sourceTree = "<group>";
@@ -287,6 +280,8 @@
 			children = (
 				7744A5151D547BCD0000E18D /* AppData.h */,
 				7744A5161D547BCD0000E18D /* AppData.m */,
+				77447A711D5B51BC006AF506 /* DataStore.h */,
+				77447A721D5B51BD006AF506 /* DataStore.m */,
 				774340EF1D49FE69000D6FF2 /* SecureDataStore.h */,
 				774340F01D49FE69000D6FF2 /* SecureDataStore.m */,
 				774341011D4A4CFE000D6FF2 /* RelayDevice.h */,
@@ -337,8 +332,6 @@
 				77CA80D51D50BF93007AE6E3 /* CreatorLinkButton.m */,
 				774748F81D54C03300CC37E1 /* CreatorSwitch.h */,
 				774748F91D54C03300CC37E1 /* CreatorSwitch.m */,
-				77CA80D61D50BF93007AE6E3 /* CreatorTextField.h */,
-				77CA80D71D50BF93007AE6E3 /* CreatorTextField.m */,
 				77CA80DC1D50BFCA007AE6E3 /* GatewayTableViewCell.h */,
 				77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */,
 				77CA80E81D50C08F007AE6E3 /* RelayDeviceTableViewCell.h */,
@@ -371,6 +364,8 @@
 				77CA812B1D520E9F007AE6E3 /* OauthManager.m */,
 				77D45CFE1D48A281009E4566 /* OauthRequest.h */,
 				77D45CFF1D48A281009E4566 /* OauthRequest.m */,
+				7740EB0F1D5B32200074D019 /* POSTRequest.h */,
+				7740EB101D5B32200074D019 /* POSTRequest.m */,
 				771AD2521D4B503B00997739 /* PUTRequest.h */,
 				771AD2531D4B503B00997739 /* PUTRequest.m */,
 			);
@@ -441,7 +436,7 @@
 				775D54FD1D4F2E2800216033 /* Roboto-MediumItalic.ttf in Resources */,
 				775D54F91D4F2E2800216033 /* Roboto-Italic.ttf in Resources */,
 				775D54FA1D4F2E2800216033 /* Roboto-Light.ttf in Resources */,
-				772CA1271D48EF03006ECAA2 /* Login.storyboard in Resources */,
+				77447A741D5B6DE7006AF506 /* Login.storyboard in Resources */,
 				775D54F81D4F2E2800216033 /* Roboto-BoldItalic.ttf in Resources */,
 				775D54F61D4F2E2800216033 /* Roboto-BlackItalic.ttf in Resources */,
 				775D54FF1D4F2E2800216033 /* Roboto-Thin.ttf in Resources */,
@@ -468,42 +463,41 @@
 			files = (
 				77CA80E71D50BFF2007AE6E3 /* RelayDevicesViewController.m in Sources */,
 				77CA80E61D50BFF2007AE6E3 /* LoginViewController.m in Sources */,
-				770CC1C11D4612B70088910E /* Hateoas.m in Sources */,
+				77447A731D5B51BD006AF506 /* DataStore.m in Sources */,
 				7744A5171D547BCD0000E18D /* AppData.m in Sources */,
-				770CC1C41D461B950088910E /* Api.m in Sources */,
-				77CA80DA1D50BF93007AE6E3 /* CreatorTextField.m in Sources */,
+				7740EB0E1D5B320F0074D019 /* AuthenticateApi.m in Sources */,
 				77D45D001D48A281009E4566 /* OauthRequest.m in Sources */,
+				77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */,
 				771AD2541D4B503B00997739 /* PUTRequest.m in Sources */,
-				774340FA1D4A3131000D6FF2 /* ObjectType.m in Sources */,
-				774340FD1D4A313F000D6FF2 /* ObjectTypes.m in Sources */,
+				77447A651D5B4F36006AF506 /* Api.m in Sources */,
+				77447A6E1D5B4F36006AF506 /* ObjectType.m in Sources */,
 				77CA80EA1D50C08F007AE6E3 /* RelayDeviceTableViewCell.m in Sources */,
-				77645F0B1D4777F300FB09B4 /* AccessKeys.m in Sources */,
+				77447A701D5B4F36006AF506 /* PageInfo.m in Sources */,
 				774340F11D49FE69000D6FF2 /* SecureDataStore.m in Sources */,
 				77D45CF81D489F88009E4566 /* BaseRequest.m in Sources */,
 				775D550B1D4F390300216033 /* GlobalStyle.m in Sources */,
+				77447A6F1D5B4F36006AF506 /* ObjectTypes.m in Sources */,
 				774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */,
-				770CC1BE1D4611F20088910E /* Link.m in Sources */,
 				77CA812C1D520E9F007AE6E3 /* OauthManager.m in Sources */,
 				774748FA1D54C03300CC37E1 /* CreatorSwitch.m in Sources */,
-				779834991D4754F3007042F6 /* Developer.m in Sources */,
-				774341001D4A4855000D6FF2 /* IPSODigitalOutputInstance.m in Sources */,
-				771AD24E1D4B318700997739 /* IPSOInstance.m in Sources */,
+				77447A6C1D5B4F36006AF506 /* Link.m in Sources */,
 				77CA80D91D50BF93007AE6E3 /* CreatorLinkButton.m in Sources */,
 				77CA80D81D50BF93007AE6E3 /* CreatorButton.m in Sources */,
-				77645F081D47768D00FB09B4 /* AccessKey.m in Sources */,
-				77D45D031D48BA7C009E4566 /* Client.m in Sources */,
+				77447A671D5B4F36006AF506 /* Clients.m in Sources */,
+				77447A661D5B4F36006AF506 /* Client.m in Sources */,
 				770CC17A1D460ECA0088910E /* AppDelegate.m in Sources */,
-				771AD2511D4B32CF00997739 /* Instances.m in Sources */,
 				770CC1771D460ECA0088910E /* main.m in Sources */,
+				77447A6D1D5B4F36006AF506 /* OauthToken.m in Sources */,
+				77447A641D5B4F36006AF506 /* AccessKey.m in Sources */,
+				77447A681D5B4F36006AF506 /* Hateoas.m in Sources */,
+				77447A6B1D5B4F36006AF506 /* IPSOInstance.m in Sources */,
+				7740EB111D5B32200074D019 /* POSTRequest.m in Sources */,
 				77CA80E51D50BFF2007AE6E3 /* GatewaysTableViewController.m in Sources */,
 				770CC1BB1D4611E30088910E /* DeviceServerApi.m in Sources */,
-				77B0C6101D465D5F006AAAE5 /* OauthToken.m in Sources */,
 				77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */,
-				77645F051D47750000FB09B4 /* PageInfo.m in Sources */,
+				77447A691D5B4F36006AF506 /* Instances.m in Sources */,
 				772CA1161D48E280006ECAA2 /* DataApi.m in Sources */,
 				77D45CFD1D48A263009E4566 /* GETRequest.m in Sources */,
-				77D45D061D48BB97009E4566 /* Clients.m in Sources */,
-				770CC1BA1D4611E30088910E /* AccountsServerApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,6 +518,14 @@
 				770CC1841D460ECA0088910E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		77447A761D5B6DE7006AF506 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77447A751D5B6DE7006AF506 /* Base */,
+			);
+			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

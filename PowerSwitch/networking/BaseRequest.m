@@ -92,6 +92,14 @@
                          return nil;
                      }
                      
+                     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                         if (!(httpResponse.statusCode >=200 && httpResponse.statusCode < 300)) {
+                             bErr = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": [NSString stringWithFormat:@"HTTP response code: %@", @(httpResponse.statusCode)]}];
+                             return nil;
+                         }
+                     }
+                     
                      if (response.MIMEType && weakSelf.request.allHTTPHeaderFields[@"Accept"] &&
                          NO == [response.MIMEType isEqualToString:weakSelf.request.allHTTPHeaderFields[@"Accept"]])
                      {

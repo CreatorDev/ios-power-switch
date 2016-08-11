@@ -33,32 +33,20 @@
 
 @implementation SecureDataStore
 
-+ (void)storeUsername:(nonnull NSString *)username password:(nonnull NSString *)password {
-    [[self class] createKeychainValue:username forIdentifier:@"AccountServerUsername"];
-    [[self class] createKeychainValue:password forIdentifier:@"AccountServerPassword"];
++ (void)storeDeviceServerAccessKey:(nonnull AccessKey *)accessKey {
+    [[self class] createKeychainValue:accessKey.name forIdentifier:@"DeviceServerAccessName"];
+    [[self class] createKeychainValue:accessKey.key forIdentifier:@"DeviceServerAccessKey"];
+    [[self class] createKeychainValue:accessKey.secret forIdentifier:@"DeviceServerSecret"];
 }
 
-+ (void)cleanUsernamePassword {
-    [[self class] deleteKeychainValueWithIdentifier:@"AccountServerUsername"];
-    [[self class] deleteKeychainValueWithIdentifier:@"AccountServerPassword"];
-}
-
-+ (nullable NSString *)readUsername {
-    return [[self class] searchKeychainCopyMatching:@"AccountServerUsername"];
-}
-
-+ (nullable NSString *)readPassword {
-    return [[self class] searchKeychainCopyMatching:@"AccountServerPassword"];
-}
-
-+ (void)storeDeviceServerAccessKey:(nonnull NSString *)key secret:(nonnull NSString *)secret {
-    [[self class] createKeychainValue:key forIdentifier:@"DeviceServerAccessKey"];
-    [[self class] createKeychainValue:secret forIdentifier:@"DeviceServerSecret"];
-}
-
-+ (void)cleanDeviceServerAccessKeySecret {
++ (void)cleanDeviceServerAccessKey {
+    [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerAccessName"];
     [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerAccessKey"];
     [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerSecret"];
+}
+
++ (nullable NSString *)readDeviceServerAccessName {
+    return [[self class] searchKeychainCopyMatching:@"DeviceServerAccessName"];
 }
 
 + (nullable NSString *)readDeviceServerAccessKey {
@@ -76,7 +64,7 @@
     return @{(id)kSecClass: (id)kSecClassGenericPassword,
              (id)kSecAttrGeneric: encodedIdentifier,
              (id)kSecAttrAccount: encodedIdentifier,
-             (id)kSecAttrService: @"flowcloud.systems",
+             (id)kSecAttrService: @"deviceserver.flowcloud.systems",
              (id)kSecAttrAccessible: (id)kSecAttrAccessibleWhenUnlocked};
 }
 

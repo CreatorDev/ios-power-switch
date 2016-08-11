@@ -30,25 +30,25 @@
  */
 
 #import "DataApi.h"
-#import "AccountsServerApi.h"
+#import "AuthenticateApi.h"
+#import "DataStore.h"
 #import "DeviceServerApi.h"
-#import "AccessKeys.h"
 #import "SecureDataStore.h"
 #import "OauthManager.h"
 
 @interface DataApi ()
-@property(nonatomic, strong, nonnull) AccountsServerApi *accountApi;
+@property(nonatomic, strong, nonnull) AuthenticateApi *authenticateApi;
 @property(nonatomic, strong, nonnull) DeviceServerApi *deviceServerApi;
 @property(nonatomic, strong, nonnull) NSOperationQueue *networkQueue;
 @end
 
 @implementation DataApi
 
-- (AccountsServerApi *)accountApi {
-    if (_accountApi == nil) {
-        _accountApi = [AccountsServerApi new];
+- (AuthenticateApi *)authenticateApi {
+    if (_authenticateApi == nil) {
+        _authenticateApi = [AuthenticateApi new];
     }
-    return _accountApi;
+    return _authenticateApi;
 }
 
 - (DeviceServerApi *)deviceServerApi {
@@ -67,63 +67,48 @@
     return _networkQueue;
 }
 
-- (void)loginWithUsername:(nonnull NSString *)username
-                 password:(nonnull NSString *)password
-                  success:(SuccessBlock)success
-                  failure:(FailureBlock)failure
+- (BOOL)processOpenUrl:(nonnull NSURL *)url {
+    return [self.authenticateApi processOpenUrl:url];
+}
+
+- (void)loginWithSuccess:(nullable SuccessBlock)success
+                 failure:(nullable FailureBlock)failure
 {
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSError *error = nil;
-        AccessKeys *accessKeys = [self.accountApi loginWithUsername:username
-                                                           password:password
-                                                              error:&error];
-        if (error) {
-            if (failure) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    failure(error);
-                }];
+        [self.authenticateApi loginWithCompletionHandler:^(AccessKey * _Nullable accessKey, NSError * _Nullable error) {
+            if (accessKey) {
+                if ([DataStore readKeepMeSignedIn]) {
+                    [[SecureDataStore class] storeDeviceServerAccessKey:accessKey];
+                } else {
+                    [[SecureDataStore class] cleanDeviceServerAccessKey];
+                }
+                
+                NSError *err = nil;
+                [self.deviceServerApi loginWithKey:accessKey.key
+                                            secret:accessKey.secret
+                                             error:&err];
+                if (err) {
+                    if (failure) {
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            failure(err);
+                        }];
+                    }
+                    return;
+                }
+                
+                if (success) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        success();
+                    }];
+                }
+            } else {
+                if (failure) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        failure(error);
+                    }];
+                }
             }
-            return;
-        }
-        
-        if (accessKeys != nil) {
-            [[SecureDataStore class] storeUsername:username password:password];
-        }
-        
-        if (accessKeys.items.count == 0) {
-            if (failure) {
-                NSError *err = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"No access keys."}];
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    failure(err);
-                }];
-            }
-            return;
-        }
-        
-        if (accessKeys.items.count > 1) {
-            NSLog(@"Warning: More than one access key.");
-        }
-        
-        AccessKey *accessKey = accessKeys.items.firstObject;
-        [[SecureDataStore class] storeDeviceServerAccessKey:accessKey.key secret:accessKey.secret];
-        
-        [self.deviceServerApi loginWithKey:accessKey.key
-                                    secret:accessKey.secret
-                                     error:&error];
-        if (error) {
-            if (failure) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    failure(error);
-                }];
-            }
-            return;
-        }
-        
-        if (success) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                success();
-            }];
-        }
+        }];
     }]];
 }
 
@@ -170,8 +155,8 @@
 }
 
 - (void)logout {
-    [[SecureDataStore class] cleanUsernamePassword];
-    [[SecureDataStore class] cleanDeviceServerAccessKeySecret];
+    [[DataStore class] cleanKeepMeSignedIn];
+    [[SecureDataStore class] cleanDeviceServerAccessKey];
 }
 
 - (void)requestGatewaysWithSuccess:(nullable RequestGatewaysSuccessBlock)success

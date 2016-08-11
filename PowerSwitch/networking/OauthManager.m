@@ -31,23 +31,29 @@
 
 #import "OauthManager.h"
 #import "OauthRequest.h"
-#import "SecureDataStore.h"
 
 @interface OauthManager ()
 @property(nonatomic, strong, nonnull) NSURL *authenticateUrl;
+@property(nonatomic, strong, nonnull) NSString *accessKey;
+@property(nonatomic, strong, nonnull) NSString *accessSecret;
 @property(atomic, strong, nullable) OauthToken *oauthToken;
 @end
 
 @implementation OauthManager
 @synthesize oauthToken = _oauthToken;
 
-- (nonnull instancetype)initWithAuthenticateUrl:(NSURL *)url {
+- (nonnull instancetype)initWithAuthenticateUrl:(nonnull NSURL *)url
+                                      accessKey:(nonnull NSString *)key
+                                         secret:(nonnull NSString *)secret
+{
     self = [super init];
     if (self) {
         if (url == nil) {
             return nil;
         }
         _authenticateUrl = url;
+        _accessKey = key;
+        _accessSecret = secret;
     }
     return self;
 }
@@ -66,12 +72,9 @@
 - (OauthToken *)oauthToken {
     @synchronized (self) {
         if (_oauthToken == nil || [_oauthToken.expireTime timeIntervalSinceDate:[NSDate date]] < 30.0) {
-            NSString *accessKey = [[SecureDataStore class] readDeviceServerAccessKey];
-            NSString *secret = [[SecureDataStore class] readDeviceServerSecret];
-            
-            if (accessKey && secret) {
+            if (self.accessKey && self.accessSecret) {
                 NSError *error = nil;
-                _oauthToken = [self oauthTokenWithUrl:self.authenticateUrl username:accessKey password:secret error:&error];
+                _oauthToken = [self oauthTokenWithUrl:self.authenticateUrl username:self.accessKey password:self.accessSecret error:&error];
                 if (error) {
                     NSLog(@"%@ Error retrieving oauth token.", NSStringFromSelector(_cmd));
                 }

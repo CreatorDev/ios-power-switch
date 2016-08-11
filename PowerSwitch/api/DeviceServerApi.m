@@ -64,7 +64,9 @@
         return NO;
     }
     
-    self.oauthManager = [[OauthManager alloc] initWithAuthenticateUrl:authenticateUrl];
+    self.oauthManager = [[OauthManager alloc] initWithAuthenticateUrl:authenticateUrl
+                                                            accessKey:key
+                                                               secret:secret];
     if (self.oauthManager.oauthToken == nil) {
         if (error) {
             *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"Oauth token not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
@@ -133,7 +135,7 @@
     objectInstanceUrl = [objectInstanceUrl URLByAppendingPathComponent:instanceId.stringValue];
     
     NSError *err = nil;
-    PUTRequest *request = [PUTRequest PUTRequestWithUrl:objectInstanceUrl body:data auth:self.oauthManager.oauthToken];
+    PUTRequest *request = [PUTRequest PUTRequestWithUrl:objectInstanceUrl contentType:@"application/json; charset=utf-8" body:data auth:self.oauthManager.oauthToken];
     [request executeWithSharedUrlSessionAndReturnClass:nil error:&err];
     if (error) {
         *error = err;

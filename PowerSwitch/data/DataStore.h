@@ -29,9 +29,10 @@
  *
  */
 
-#import "Hateoas.h"
+@import Foundation;
 
-@interface Developer : Hateoas
-@property(nonatomic, strong, nonnull) NSString *username;
-@property(nonatomic, strong, nonnull) NSString *email;
+@interface DataStore : NSObject
++ (void)storeKeepMeSignedIn:(BOOL)on;
++ (void)cleanKeepMeSignedIn;
++ (BOOL)readKeepMeSignedIn;
 @end

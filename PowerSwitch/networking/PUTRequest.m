@@ -38,13 +38,14 @@
 @implementation PUTRequest
 
 + (nullable PUTRequest *)PUTRequestWithUrl:(nonnull NSURL *)url
+                               contentType:(nullable NSString *)contentType
                                       body:(nullable NSData *)body
                                       auth:(nullable OauthToken *)oauthToken
 {
     PUTRequest *putRequest = [[PUTRequest alloc] initWithUrl:url];
     putRequest.request.HTTPMethod = @"PUT";
     putRequest.request.HTTPBody = body;
-    [putRequest.request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [putRequest.request setValue:contentType forHTTPHeaderField:@"Content-Type"];
     putRequest.oauthToken = oauthToken;
     return putRequest;
 }
