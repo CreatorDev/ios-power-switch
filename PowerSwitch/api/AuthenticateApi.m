@@ -45,7 +45,7 @@
 #pragma mark - Public methods
 
 - (void)loginWithCompletionHandler:(nullable LoginCompletionBlock)completion {
-    NSString *redirectUrl = [NSString stringWithFormat:@"%@:/callback", [self creatorRedirectUrl]];
+    NSString *redirectUrl = [NSString stringWithFormat:@"%@:%@", [self creatorRedirectUrlScheme], [self creatorRedirectUrlPath]];
     NSString *authenticateUrlStr = [NSString stringWithFormat:@"https://id.creatordev.io/oauth2/auth?client_id=%@&scope=core+openid+offline&redirect_uri=%@&state=dummy_state&nonce=%@&response_type=%@", [self creatorClientId], redirectUrl, [NSUUID UUID].UUIDString, [self idTokenTag]];
     NSURL *authenticateUrl = [NSURL URLWithString:authenticateUrlStr];
     
@@ -103,11 +103,15 @@
 #pragma mark - Private
 
 - (nullable NSString *)tokenFromURL:(nonnull NSURL *)url {
-    NSArray<NSString *> *urlComponents = [url.absoluteString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"#="]];
-    if (urlComponents.count >=3 &&
-        [urlComponents[0] containsString:[self creatorRedirectUrl]] &&
-        [urlComponents[1] isEqualToString:[self idTokenTag]]) {
-        return urlComponents[2];
+    if ([url.scheme isEqualToString:[self creatorRedirectUrlScheme]] &&
+        [url.path isEqualToString:[self creatorRedirectUrlPath]])
+    {
+        NSArray<NSString *> *tokenKeyValue = [url.fragment componentsSeparatedByString:@"="];
+        if (tokenKeyValue.count == 2 &&
+            [tokenKeyValue[0] isEqualToString:[self idTokenTag]])
+        {
+            return tokenKeyValue[1];
+        }
     }
     return nil;
 }
@@ -130,8 +134,12 @@
     return @"1c6c7bee-b5d0-440c-9b5a-61f54a62c18d";
 }
 
-- (nonnull NSString *)creatorRedirectUrl {
+- (nonnull NSString *)creatorRedirectUrlScheme {
     return @"io.creatordev.kit.powerswitch";
+}
+
+- (nonnull NSString *)creatorRedirectUrlPath {
+    return @"/callback";
 }
 
 - (nonnull NSString *)idTokenTag {
