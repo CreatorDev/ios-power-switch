@@ -71,6 +71,7 @@
         [weakSelf presentMainViewController];
         [weakSelf showLoginActivityIndicator:NO];
     } failure:^(NSError * _Nullable error) {
+        NSLog(@"ERROR login: %@", error);
         [weakSelf showLoginActivityIndicator:NO];
     }];
 }
@@ -91,6 +92,7 @@
         [self.dataApi silentLoginWithSuccess:^{
             [weakSelf presentMainViewController];
         } failure:^(NSError * _Nullable error) {
+            NSLog(@"ERROR silent login: %@", error);
             [weakSelf showSilentLoginActivityIndicator:NO];
         }];
     }

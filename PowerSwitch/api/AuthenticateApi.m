@@ -35,18 +35,27 @@
 #import "AppDelegate.h"
 #import "POSTRequest.h"
 
+
+static NSString *DeveloperIdServerUrl = @"https://developer-id.flowcloud.systems";
+static NSString *CreatorClientId = @"1c6c7bee-b5d0-440c-9b5a-61f54a62c18d";
+static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
+static NSString *CreatorRedirectUrlPath = @"/callback";
+static NSString *IdTokenTag = @"id_token";
+
+
 @interface AuthenticateApi () <SFSafariViewControllerDelegate>
 @property(nonatomic, weak, nullable) SFSafariViewController *safariVc;
 @property(nonatomic, strong, nullable) LoginCompletionBlock loginCompletionBlock;
 @end
+
 
 @implementation AuthenticateApi
 
 #pragma mark - Public methods
 
 - (void)loginWithCompletionHandler:(nullable LoginCompletionBlock)completion {
-    NSString *redirectUrl = [NSString stringWithFormat:@"%@:%@", [self creatorRedirectUrlScheme], [self creatorRedirectUrlPath]];
-    NSString *authenticateUrlStr = [NSString stringWithFormat:@"https://id.creatordev.io/oauth2/auth?client_id=%@&scope=core+openid+offline&redirect_uri=%@&state=dummy_state&nonce=%@&response_type=%@", [self creatorClientId], redirectUrl, [NSUUID UUID].UUIDString, [self idTokenTag]];
+    NSString *redirectUrl = [NSString stringWithFormat:@"%@:%@", CreatorRedirectUrlScheme, CreatorRedirectUrlPath];
+    NSString *authenticateUrlStr = [NSString stringWithFormat:@"https://id.creatordev.io/oauth2/auth?client_id=%@&scope=core+openid+offline&redirect_uri=%@&state=dummy_state&nonce=%@&response_type=%@", CreatorClientId, redirectUrl, [NSUUID UUID].UUIDString, IdTokenTag];
     NSURL *authenticateUrl = [NSURL URLWithString:authenticateUrlStr];
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -83,7 +92,7 @@
 - (nullable AccessKey *)accessKeyWithToken:(nonnull NSString *)token
                                      error:(NSError * _Nullable * _Nullable)error
 {
-    NSString *bodyStr = [NSString stringWithFormat:@"%@=%@", [self idTokenTag], token];
+    NSString *bodyStr = [NSString stringWithFormat:@"%@=%@", IdTokenTag, token];
     NSData *body = [bodyStr dataUsingEncoding:NSASCIIStringEncoding];
     POSTRequest *request = [POSTRequest POSTRequestWithUrl:[self developerIdServerUrl]
                                                     accept:@"application/vnd.imgtec.com.accesskey+json"
@@ -103,12 +112,12 @@
 #pragma mark - Private
 
 - (nullable NSString *)tokenFromURL:(nonnull NSURL *)url {
-    if ([url.scheme isEqualToString:[self creatorRedirectUrlScheme]] &&
-        [url.path isEqualToString:[self creatorRedirectUrlPath]])
+    if ([url.scheme isEqualToString:CreatorRedirectUrlScheme] &&
+        [url.path isEqualToString:CreatorRedirectUrlPath])
     {
         NSArray<NSString *> *tokenKeyValue = [url.fragment componentsSeparatedByString:@"="];
         if (tokenKeyValue.count == 2 &&
-            [tokenKeyValue[0] isEqualToString:[self idTokenTag]])
+            [tokenKeyValue[0] isEqualToString:IdTokenTag])
         {
             return tokenKeyValue[1];
         }
@@ -127,23 +136,7 @@
 }
 
 - (nonnull NSURL *)developerIdServerUrl {
-    return [NSURL URLWithString:@"https://developer-id.flowcloud.systems"];
-}
-
-- (nonnull NSString *)creatorClientId {
-    return @"1c6c7bee-b5d0-440c-9b5a-61f54a62c18d";
-}
-
-- (nonnull NSString *)creatorRedirectUrlScheme {
-    return @"io.creatordev.kit.powerswitch";
-}
-
-- (nonnull NSString *)creatorRedirectUrlPath {
-    return @"/callback";
-}
-
-- (nonnull NSString *)idTokenTag {
-    return @"id_token";
+    return [NSURL URLWithString:DeveloperIdServerUrl];
 }
 
 @end
