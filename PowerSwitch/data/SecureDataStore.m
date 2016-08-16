@@ -56,7 +56,7 @@ static NSString *DeviceServerRefreshTokenId = @"DeviceServerRefreshToken";
     return @{(id)kSecClass: (id)kSecClassGenericPassword,
              (id)kSecAttrGeneric: encodedIdentifier,
              (id)kSecAttrAccount: encodedIdentifier,
-             (id)kSecAttrService: @"deviceserver.flowcloud.systems",
+             (id)kSecAttrService: @"deviceserver",
              (id)kSecAttrAccessible: (id)kSecAttrAccessibleWhenUnlocked};
 }
 

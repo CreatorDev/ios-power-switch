@@ -199,7 +199,7 @@ typedef NS_ENUM(NSInteger, LoginMethod) {
 #pragma mark - Private
 
 - (NSURL *)deviceServerUrl {
-    return [NSURL URLWithString:@"https://deviceserver.flowcloud.systems"];
+    return [NSURL URLWithString:@"https://deviceserver.creatordev.io"];
 }
 
 @end
