@@ -35,4 +35,6 @@
 + (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
                                       username:(nonnull NSString *)username
                                       password:(nonnull NSString *)password;
++ (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
+                                  refreshToken:(nonnull NSString *)refreshToken;
 @end

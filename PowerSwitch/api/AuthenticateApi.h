@@ -31,10 +31,13 @@
 
 @import Foundation;
 #import "AccessKey.h"
+#import "OpenUrlProtocol.h"
 
 typedef void(^LoginCompletionBlock)(AccessKey * _Nullable, NSError * _Nullable);
 
-@interface AuthenticateApi : NSObject
-- (BOOL)processOpenUrl:(nonnull NSURL *)url;
+@interface AuthenticateApi : NSObject <OpenUrlProtocol>
 - (void)loginWithCompletionHandler:(nullable LoginCompletionBlock)completion;
+- (nullable AccessKey *)continueLoginWithToken:(nonnull NSString *)token
+                                         error:(NSError * _Nullable * _Nullable)error;
++ (nullable NSString *)tokenFromURL:(nonnull NSURL *)url;
 @end

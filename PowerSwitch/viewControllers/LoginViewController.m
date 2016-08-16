@@ -31,9 +31,11 @@
 
 #import "LoginViewController.h"
 #import "DataApi.h"
+#import "LoginApi.h"
 #import "AppDelegate.h"
-#import "DataStore.h"
-#import "SecureDataStore.h"
+#import "AppDelegate.h"
+#import "ProvideDataApiProtocol.h"
+#import "DataApi.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -42,7 +44,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *learnMoreButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
-@property (nonatomic, readonly, nonnull) DataApi *dataApi;
+@property (nonatomic, strong, nonnull) LoginApi *loginApi;
 @property (nonatomic, readonly) NSURL *learnMoreUrl;
 @end
 
@@ -50,7 +52,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if ([[DataStore class] readKeepMeSignedIn]) {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    if (appDelegate.authenticateToken) {
+        [self loginWithAuthenticateToken:appDelegate.authenticateToken];
+    } else {
         [self silentLogin];
     }
     self.versionLabel.text = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
@@ -64,11 +69,10 @@
 
 - (IBAction)loginAction {
     [self showLoginActivityIndicator:YES];
-    [[DataStore class]  storeKeepMeSignedIn:self.keepMeSignedInSwitch.on];
     
     __weak typeof(self) weakSelf = self;
-    [self.dataApi loginWithSuccess:^{
-        [weakSelf presentMainViewController];
+    [self.loginApi loginWithKeepMeSignedIn:self.keepMeSignedInSwitch.on success:^(DeviceServerApi * _Nonnull deviceServerApi) {
+        [weakSelf presentMainViewControllerWithDeviceServerApi:deviceServerApi];
         [weakSelf showLoginActivityIndicator:NO];
     } failure:^(NSError * _Nullable error) {
         NSLog(@"ERROR login: %@", error);
@@ -84,13 +88,27 @@
 
 #pragma mark - Private
 
+- (void)loginWithAuthenticateToken:(NSString *)authenticateToken {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    __weak typeof(self) weakSelf = self;
+    
+    [self showLoginActivityIndicator:YES];
+    [self.loginApi continueLoginWithToken:appDelegate.authenticateToken success:^(DeviceServerApi * _Nonnull deviceServerApi) {
+        [weakSelf presentMainViewControllerWithDeviceServerApi:deviceServerApi];
+        [weakSelf showLoginActivityIndicator:NO];
+    } failure:^(NSError * _Nullable error) {
+        NSLog(@"ERROR login with open URL on app launch: %@", error);
+        [weakSelf showLoginActivityIndicator:NO];
+    }];
+}
+
 - (void)silentLogin {
-    if ([self.dataApi isSilentLoginStartPossible]) {
+    if ([self.loginApi isSilentLoginStartPossible]) {
         [self showSilentLoginActivityIndicator:YES];
         
         __weak typeof(self) weakSelf = self;
-        [self.dataApi silentLoginWithSuccess:^{
-            [weakSelf presentMainViewController];
+        [self.loginApi silentLoginWithSuccess:^(DeviceServerApi * _Nonnull deviceServerApi) {
+            [weakSelf presentMainViewControllerWithDeviceServerApi:deviceServerApi];
         } failure:^(NSError * _Nullable error) {
             NSLog(@"ERROR silent login: %@", error);
             [weakSelf showSilentLoginActivityIndicator:NO];
@@ -110,17 +128,22 @@
     self.loginButton.enabled = !on;
 }
 
-- (void)presentMainViewController {
+- (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    appDelegate.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+    UINavigationController *navVc = [mainStoryboard instantiateInitialViewController];
+    UIViewController<ProvideDataApiProtocol> *topVc = (UIViewController<ProvideDataApiProtocol> *) navVc.topViewController;
+    [topVc setDataApi:[[DataApi alloc] initWithDeviceServerApi:deviceServerApi]];
+    appDelegate.window.rootViewController = navVc;
 }
 
 #pragma mark - Private (setters/getters)
 
-- (DataApi *)dataApi {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    return appDelegate.dataApi;
+- (LoginApi *)loginApi {
+    if (_loginApi == nil) {
+        _loginApi = [LoginApi new];
+    }
+    return _loginApi;
 }
 
 - (NSURL *)learnMoreUrl {

@@ -30,30 +30,22 @@
  */
 
 @import Foundation;
-#import "Clients.h"
-#import "ObjectTypes.h"
-#import "Instances.h"
+#import "DeviceServerApi.h"
+#import "OpenUrlProtocol.h"
+#import "Typedefs.h"
 
-@interface DeviceServerApi : NSObject
-- (void)loginWithKey:(nonnull NSString *)key
-              secret:(nonnull NSString *)secret
-      keepMeSignedIn:(BOOL)keepMeSignedIn
-               error:(NSError * _Nullable * _Nullable)error;
+typedef void(^LoginSuccessBlock)(DeviceServerApi * _Nonnull);
 
-- (void)loginWithRefreshToken:(nonnull NSString *)token
-               keepMeSignedIn:(BOOL)keepMeSignedIn
-                        error:(NSError * _Nullable * _Nullable)error;
+@interface LoginApi : NSObject <OpenUrlProtocol>
+- (void)loginWithKeepMeSignedIn:(BOOL)keepMeSignedIn
+                        success:(nullable LoginSuccessBlock)success
+                        failure:(nullable FailureBlock)failure;
 
-- (nullable Clients *)clientsWithError:(NSError * _Nullable * _Nullable)error;
-
-- (nullable ObjectTypes *)objectTypesForClient:(nonnull Client *)client
-                                         error:(NSError * _Nullable * _Nullable)error;
-
-- (nullable Instances *)objectInstancesForObjectType:(nonnull ObjectType *)objectType
-                                               error:(NSError * _Nullable * _Nullable)error;
-
-- (BOOL)putInstanceData:(nullable NSData *)data
-              forObject:(nonnull ObjectType *)objectType
-             instanceId:(nonnull NSNumber *)instanceId
-                  error:(NSError * _Nullable * _Nullable)error;
+- (BOOL)isSilentLoginStartPossible;
+- (void)silentLoginWithSuccess:(nullable LoginSuccessBlock)success
+                       failure:(nullable FailureBlock)failure;
+- (void)continueLoginWithToken:(nonnull NSString *)launchUrlToken
+                       success:(nullable LoginSuccessBlock)success
+                       failure:(nullable FailureBlock)failure;
++ (void)logout;
 @end

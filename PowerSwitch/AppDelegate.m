@@ -31,6 +31,11 @@
 
 #import "AppDelegate.h"
 #import "GlobalStyle.h"
+#import "AuthenticateApi.h"
+
+@interface AppDelegate ()
+@property(strong, nonatomic, nonnull) AppData *appData;
+@end
 
 @implementation AppDelegate
 
@@ -39,7 +44,7 @@
     
     NSURL *launchUrl = launchOptions[UIApplicationLaunchOptionsURLKey];
     if (launchUrl) {
-        return [self.dataApi processOpenUrl:launchUrl];
+        self.authenticateToken = [[AuthenticateApi class] tokenFromURL:launchUrl];
     }
     return YES;
 }
@@ -51,15 +56,11 @@
     return _appData;
 }
 
-- (DataApi *)dataApi {
-    if (_dataApi == nil) {
-        _dataApi = [DataApi new];
-    }
-    return _dataApi;
-}
-
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    return [self.dataApi processOpenUrl:url];
+    if (self.openUrlDelegate) {
+        return [self.openUrlDelegate processOpenUrl:url];
+    }
+    return NO;
 }
 
 @end

@@ -33,12 +33,13 @@
 #import "AppDelegate.h"
 #import "AppData.h"
 #import "DataApi.h"
+#import "LoginApi.h"
 #import "RelayDevicesViewController.h"
 #import "GatewayTableViewCell.h"
 
 @interface GatewaysTableViewController () <UITableViewDataSource>
-@property (nonatomic, readonly, nonnull) AppData *appData;
-@property (nonatomic, readonly, nonnull) DataApi *dataApi;
+@property(nonatomic, readonly, nonnull) AppData *appData;
+@property(nonatomic, strong, nullable) DataApi *dataApi;
 @end
 
 @implementation GatewaysTableViewController
@@ -62,6 +63,7 @@
         if ([sender isKindOfClass:[GatewayTableViewCell class]]) {
             GatewayTableViewCell *cell = sender;
             destinationVC.client = [self.appData clientByIdentifier:cell.clientIdentifier];
+            [destinationVC setDataApi:self.dataApi];
         }
     }
 }
@@ -83,7 +85,7 @@
 }
 
 - (IBAction)logoutAction:(UIBarButtonItem *)sender {
-    [self.dataApi logout];
+    [[LoginApi class] logout];
     [self presentLoginViewController];
 }
 
@@ -106,6 +108,8 @@
     return cell;
 }
 
+#pragma mark - ProvideDeviceServerApiProtocol
+
 #pragma mark - Private
 
 - (void)reloadGateways {
@@ -115,8 +119,8 @@
         [weakSelf.refreshControl endRefreshing];
     } failure:^(NSError * _Nullable error) {
         NSLog(@"ERROR getting gateways: %@", error);
+        [weakSelf.refreshControl endRefreshing];
     }];
-    
 }
 
 - (void)setupRefreshControl {
@@ -139,11 +143,6 @@
 }
 
 #pragma mark - Private (setters/getters)
-
-- (DataApi *)dataApi {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    return appDelegate.dataApi;
-}
 
 - (AppData *)appData {
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;

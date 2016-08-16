@@ -31,24 +31,15 @@
 
 @import Foundation;
 #import "Clients.h"
-#import "ObjectTypes.h"
 #import "RelayDevice.h"
+#import "DeviceServerApi.h"
+#import "Typedefs.h"
 
-typedef void(^SuccessBlock)();
-typedef void(^FailureBlock)(NSError * _Nullable);
 typedef void(^RequestGatewaysSuccessBlock)(Clients * _Nonnull);
 typedef void(^RelayDevicesSuccessBlock)(NSArray<RelayDevice *> * _Nonnull);
 
 @interface DataApi : NSObject
-- (BOOL)processOpenUrl:(nonnull NSURL *)url;
-- (void)loginWithSuccess:(nullable SuccessBlock)success
-                 failure:(nullable FailureBlock)failure;
-
-- (BOOL)isSilentLoginStartPossible;
-- (void)silentLoginWithSuccess:(nullable SuccessBlock)success
-                       failure:(nullable FailureBlock)failure;
-- (void)logout;
-
+- (nullable instancetype) initWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi;
 - (void)requestGatewaysWithSuccess:(nullable RequestGatewaysSuccessBlock)success
                            failure:(nullable FailureBlock)failure;
 

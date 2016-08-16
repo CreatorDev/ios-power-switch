@@ -33,8 +33,6 @@
 
 @implementation GlobalStyle
 
-
-
 + (void)setupAppearance {
     [UINavigationBar appearance].barTintColor = [[GlobalStyle class] primaryColor];
     [UINavigationBar appearance].tintColor = [[GlobalStyle class] primaryColor2];

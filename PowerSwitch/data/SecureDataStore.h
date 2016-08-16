@@ -33,9 +33,7 @@
 #import "AccessKey.h"
 
 @interface SecureDataStore : NSObject
-+ (void)storeDeviceServerAccessKey:(nonnull AccessKey *)accessKey;
-+ (void)cleanDeviceServerAccessKey;
-+ (nullable NSString *)readDeviceServerAccessName;
-+ (nullable NSString *)readDeviceServerAccessKey;
-+ (nullable NSString *)readDeviceServerSecret;
++ (void)storeRefreshToken:(nonnull NSString *)refreshToken;
++ (void)cleanRefreshToken;
++ (nullable NSString *)readRefreshToken;
 @end
