@@ -31,7 +31,8 @@
 
 @import UIKit;
 #import "Client.h"
+#import "ProvideDataApiProtocol.h"
 
-@interface RelayDevicesViewController : UIViewController
+@interface RelayDevicesViewController : UIViewController <ProvideDataApiProtocol>
 @property(nonatomic, strong, nonnull) Client *client;
 @end

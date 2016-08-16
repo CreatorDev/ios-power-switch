@@ -41,17 +41,41 @@
                                       username:(nonnull NSString *)username
                                       password:(nonnull NSString *)password
 {
+    NSData *httpBody = [[self class] HTTPBodyWithUsername:username password:password];
+    return [[self class] oauthRequestWithUrl:url httpBody:httpBody];
+}
+
++ (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
+                                  refreshToken:(nonnull NSString *)refreshToken
+{
+    NSData *httpBody = [[self class] HTTPBodyWithRefreshToken:refreshToken];
+    return [[self class] oauthRequestWithUrl:url httpBody:httpBody];
+}
+
+#pragma mark - Private
+
++ (nullable NSData *)HTTPBodyWithUsername:(nonnull NSString *)username
+                                 password:(nonnull NSString *)password
+{
+    NSString *post = [NSString stringWithFormat:@"grant_type=password&username=%@&password=%@", username, password];
+    return [post dataUsingEncoding:NSASCIIStringEncoding];
+}
+
++ (nullable NSData *)HTTPBodyWithRefreshToken:(nonnull NSString *)refreshToken
+{
+    NSString *post = [NSString stringWithFormat:@"grant_type=refresh_token&refresh_token=%@", refreshToken];
+    return [post dataUsingEncoding:NSASCIIStringEncoding];
+}
+
++ (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
+                                      httpBody:(nonnull NSData *)httpBody
+{
     OauthRequest *oauthRequest = [[OauthRequest alloc] initWithUrl:url];
     oauthRequest.request.HTTPMethod = @"POST";
-    oauthRequest.request.HTTPBody = [[self class] HTTPBodyWithUsername:username password:password];
+    oauthRequest.request.HTTPBody = httpBody;
     [oauthRequest.request setValue:@"application/vnd.imgtec.oauthtoken+json" forHTTPHeaderField:@"Accept"];
     [oauthRequest.request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     return oauthRequest;
-}
-
-+ (nullable NSData *)HTTPBodyWithUsername:(nonnull NSString *)username password:(nonnull NSString *)password {
-    NSString *post = [NSString stringWithFormat:@"grant_type=password&username=%@&password=%@", username, password];
-    return [post dataUsingEncoding:NSASCIIStringEncoding];
 }
 
 @end

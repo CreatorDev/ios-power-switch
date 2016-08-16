@@ -30,32 +30,20 @@
  */
 
 #import "DataApi.h"
-#import "AuthenticateApi.h"
-#import "DataStore.h"
-#import "DeviceServerApi.h"
-#import "SecureDataStore.h"
-#import "OauthManager.h"
 
 @interface DataApi ()
-@property(nonatomic, strong, nonnull) AuthenticateApi *authenticateApi;
 @property(nonatomic, strong, nonnull) DeviceServerApi *deviceServerApi;
 @property(nonatomic, strong, nonnull) NSOperationQueue *networkQueue;
 @end
 
 @implementation DataApi
 
-- (AuthenticateApi *)authenticateApi {
-    if (_authenticateApi == nil) {
-        _authenticateApi = [AuthenticateApi new];
+- (nullable instancetype) initWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
+    self = [super init];
+    if (self) {
+        _deviceServerApi = deviceServerApi;
     }
-    return _authenticateApi;
-}
-
-- (DeviceServerApi *)deviceServerApi {
-    if (_deviceServerApi == nil) {
-        _deviceServerApi = [DeviceServerApi new];
-    }
-    return _deviceServerApi;
+    return self;
 }
 
 - (NSOperationQueue *)networkQueue {
@@ -67,104 +55,13 @@
     return _networkQueue;
 }
 
-- (BOOL)processOpenUrl:(nonnull NSURL *)url {
-    return [self.authenticateApi processOpenUrl:url];
-}
-
-- (void)loginWithSuccess:(nullable SuccessBlock)success
-                 failure:(nullable FailureBlock)failure
-{
-    [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        [self.authenticateApi loginWithCompletionHandler:^(AccessKey * _Nullable accessKey, NSError * _Nullable error) {
-            if (accessKey) {
-                if ([DataStore readKeepMeSignedIn]) {
-                    [[SecureDataStore class] storeDeviceServerAccessKey:accessKey];
-                } else {
-                    [[SecureDataStore class] cleanDeviceServerAccessKey];
-                }
-                
-                NSError *err = nil;
-                [self.deviceServerApi loginWithKey:accessKey.key
-                                            secret:accessKey.secret
-                                             error:&err];
-                if (err) {
-                    if (failure) {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            failure(err);
-                        }];
-                    }
-                    return;
-                }
-                
-                if (success) {
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        success();
-                    }];
-                }
-            } else {
-                if (failure) {
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        failure(error);
-                    }];
-                }
-            }
-        }];
-    }]];
-}
-
-- (BOOL)isSilentLoginStartPossible {
-    return [[SecureDataStore class] readDeviceServerAccessKey] != nil && [[SecureDataStore class] readDeviceServerSecret] != nil;
-}
-
-- (void)silentLoginWithSuccess:(nullable SuccessBlock)success
-                       failure:(nullable FailureBlock)failure
-{
-    [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
-        NSString *accessKey = [[SecureDataStore class] readDeviceServerAccessKey];
-        NSString *secret = [[SecureDataStore class] readDeviceServerSecret];
-        
-        if (accessKey && secret) {
-            NSError *error = nil;
-            [self.deviceServerApi loginWithKey:accessKey
-                                        secret:secret
-                                         error:&error];
-            if (error) {
-                if (failure) {
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        failure(error);
-                    }];
-                }
-                return;
-            }
-            
-            if (success) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    success();
-                }];
-                return;
-            }
-        }
-        
-        if (failure) {
-            NSError *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"Access key / secret is not present. Slient login not performed."}];
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                failure(error);
-            }];
-        }
-    }]];
-}
-
-- (void)logout {
-    [[DataStore class] cleanKeepMeSignedIn];
-    [[SecureDataStore class] cleanDeviceServerAccessKey];
-}
-
 - (void)requestGatewaysWithSuccess:(nullable RequestGatewaysSuccessBlock)success
                            failure:(nullable FailureBlock)failure
 {
+    __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSError *error = nil;
-        Clients *clients = [self.deviceServerApi clientsWithError:&error];
+        Clients *clients = [weakSelf.deviceServerApi clientsWithError:&error];
         if (error || clients == nil) {
             if (failure) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -198,9 +95,10 @@
                              success:(nullable RelayDevicesSuccessBlock)success
                              failure:(nullable FailureBlock)failure
 {
+    __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSError *error = nil;
-        ObjectTypes *objectTypes = [self.deviceServerApi objectTypesForClient:client error:&error];
+        ObjectTypes *objectTypes = [weakSelf.deviceServerApi objectTypesForClient:client error:&error];
         if (error || objectTypes == nil) {
             if (failure) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -215,7 +113,7 @@
         for (ObjectType *objectType in objectTypes.items) {
             NSString *IPSODigitalOutputObjectID = [[RelayDevice class] IPSOObjectID];
             if ([objectType.objectTypeID isEqualToString:IPSODigitalOutputObjectID]) {
-                Instances *instances = [self.deviceServerApi objectInstancesForObjectType:objectType error:&error];
+                Instances *instances = [weakSelf.deviceServerApi objectInstancesForObjectType:objectType error:&error];
                 if (error || instances == nil) {
                     if (failure) {
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -246,6 +144,7 @@
                     success:(nullable SuccessBlock)success
                     failure:(nullable FailureBlock)failure
 {
+    __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSError *error = nil;
         NSData *data = [NSJSONSerialization dataWithJSONObject:@{@"DigitalOutputState": @(on)} options:0 error:&error];
@@ -253,7 +152,7 @@
             return;
         }
         
-        [self.deviceServerApi putInstanceData:data forObject:relayDevice.objectType instanceId:relayDevice.instanceId error:&error];
+        [weakSelf.deviceServerApi putInstanceData:data forObject:relayDevice.objectType instanceId:relayDevice.instanceId error:&error];
         if (error) {
             if (failure) {
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{

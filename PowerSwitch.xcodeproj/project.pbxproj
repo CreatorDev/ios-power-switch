@@ -55,6 +55,7 @@
 		775D55051D4F2E2800216033 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775D54F31D4F2E2800216033 /* RobotoCondensed-LightItalic.ttf */; };
 		775D55061D4F2E2800216033 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 775D54F41D4F2E2800216033 /* RobotoCondensed-Regular.ttf */; };
 		775D550B1D4F390300216033 /* GlobalStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 775D550A1D4F390300216033 /* GlobalStyle.m */; };
+		77A4494A1D5CAAAE00149F6E /* LoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A449491D5CAAAE00149F6E /* LoginApi.m */; };
 		77CA80D81D50BF93007AE6E3 /* CreatorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80D31D50BF93007AE6E3 /* CreatorButton.m */; };
 		77CA80D91D50BF93007AE6E3 /* CreatorLinkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80D51D50BF93007AE6E3 /* CreatorLinkButton.m */; };
 		77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */; };
@@ -145,6 +146,11 @@
 		775D54F41D4F2E2800216033 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Regular.ttf"; path = "fonts/RobotoTTF/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		775D55091D4F390300216033 /* GlobalStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStyle.h; sourceTree = "<group>"; };
 		775D550A1D4F390300216033 /* GlobalStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStyle.m; sourceTree = "<group>"; };
+		77A449471D5CA71B00149F6E /* OpenUrlProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUrlProtocol.h; sourceTree = "<group>"; };
+		77A449481D5CAAAE00149F6E /* LoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginApi.h; path = api/LoginApi.h; sourceTree = "<group>"; };
+		77A449491D5CAAAE00149F6E /* LoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginApi.m; path = api/LoginApi.m; sourceTree = "<group>"; };
+		77A4494E1D5DDEB000149F6E /* ProvideDataApiProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProvideDataApiProtocol.h; sourceTree = "<group>"; };
+		77A4494F1D5E750F00149F6E /* Typedefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Typedefs.h; path = api/Typedefs.h; sourceTree = "<group>"; };
 		77CA80D21D50BF93007AE6E3 /* CreatorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorButton.h; path = views/CreatorButton.h; sourceTree = "<group>"; };
 		77CA80D31D50BF93007AE6E3 /* CreatorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatorButton.m; path = views/CreatorButton.m; sourceTree = "<group>"; };
 		77CA80D41D50BF93007AE6E3 /* CreatorLinkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatorLinkButton.h; path = views/CreatorLinkButton.h; sourceTree = "<group>"; };
@@ -201,12 +207,14 @@
 			children = (
 				770CC1781D460ECA0088910E /* AppDelegate.h */,
 				770CC1791D460ECA0088910E /* AppDelegate.m */,
+				775D55091D4F390300216033 /* GlobalStyle.h */,
+				775D550A1D4F390300216033 /* GlobalStyle.m */,
+				77A449471D5CA71B00149F6E /* OpenUrlProtocol.h */,
+				77A4494E1D5DDEB000149F6E /* ProvideDataApiProtocol.h */,
 				77447A761D5B6DE7006AF506 /* Login.storyboard */,
 				770CC17E1D460ECA0088910E /* Main.storyboard */,
 				770CC1811D460ECA0088910E /* Assets.xcassets */,
 				770CC1831D460ECA0088910E /* LaunchScreen.storyboard */,
-				775D55091D4F390300216033 /* GlobalStyle.h */,
-				775D550A1D4F390300216033 /* GlobalStyle.m */,
 				770CC1AE1D460F9E0088910E /* Api */,
 				772CA1101D48E209006ECAA2 /* Data */,
 				770CC1B51D4611BE0088910E /* Hateoas */,
@@ -237,6 +245,9 @@
 				770CC1B91D4611E30088910E /* DeviceServerApi.m */,
 				772CA1141D48E280006ECAA2 /* DataApi.h */,
 				772CA1151D48E280006ECAA2 /* DataApi.m */,
+				77A449481D5CAAAE00149F6E /* LoginApi.h */,
+				77A449491D5CAAAE00149F6E /* LoginApi.m */,
+				77A4494F1D5E750F00149F6E /* Typedefs.h */,
 			);
 			name = Api;
 			sourceTree = "<group>";
@@ -481,6 +492,7 @@
 				77CA812C1D520E9F007AE6E3 /* OauthManager.m in Sources */,
 				774748FA1D54C03300CC37E1 /* CreatorSwitch.m in Sources */,
 				77447A6C1D5B4F36006AF506 /* Link.m in Sources */,
+				77A4494A1D5CAAAE00149F6E /* LoginApi.m in Sources */,
 				77CA80D91D50BF93007AE6E3 /* CreatorLinkButton.m in Sources */,
 				77CA80D81D50BF93007AE6E3 /* CreatorButton.m in Sources */,
 				77447A671D5B4F36006AF506 /* Clients.m in Sources */,

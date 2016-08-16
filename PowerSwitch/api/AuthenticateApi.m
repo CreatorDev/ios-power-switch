@@ -67,6 +67,7 @@ static NSString *IdTokenTag = @"id_token";
         [appDelegate.window.rootViewController presentViewController:safariVC animated:YES completion:nil];
         self.safariVc = safariVC;
         self.loginCompletionBlock = completion;
+        appDelegate.openUrlDelegate = self;
         // There are two ways LoginCompletionBlock will be called:
         // 1) processOpenUrl: is called from AppDelegate
         // 2) or from SFSafariViewControllerDelegate safariViewControllerDidFinish:
@@ -74,10 +75,13 @@ static NSString *IdTokenTag = @"id_token";
 }
 
 - (BOOL)processOpenUrl:(nonnull NSURL *)url {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate.openUrlDelegate = nil;
+    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.safariVc dismissViewControllerAnimated:YES completion:nil];
     }];
-    NSString *token = [self tokenFromURL:url];
+    NSString *token = [[self class] tokenFromURL:url];
     if (token) {
         NSError *error = nil;
         AccessKey *accessKey = [self accessKeyWithToken:token error:&error];
@@ -85,6 +89,26 @@ static NSString *IdTokenTag = @"id_token";
         return YES;
     }
     return NO;
+}
+
+- (nullable AccessKey *)continueLoginWithToken:(nonnull NSString *)token
+                                         error:(NSError * _Nullable * _Nullable)error
+{
+    return [self accessKeyWithToken:token error:error];
+}
+
++ (nullable NSString *)tokenFromURL:(nonnull NSURL *)url {
+    if ([url.scheme isEqualToString:CreatorRedirectUrlScheme] &&
+        [url.path isEqualToString:CreatorRedirectUrlPath])
+    {
+        NSArray<NSString *> *tokenKeyValue = [url.fragment componentsSeparatedByString:@"="];
+        if (tokenKeyValue.count == 2 &&
+            [tokenKeyValue[0] isEqualToString:IdTokenTag])
+        {
+            return tokenKeyValue[1];
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Authentication Server methods
@@ -105,25 +129,14 @@ static NSString *IdTokenTag = @"id_token";
 #pragma mark - SFSafariViewControllerDelegate
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate.openUrlDelegate = nil;
+
     NSError *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"Safari View Controller Done button pressed."}];
     [self callLoginCompletionBlockWithAccessKey:nil error:error];
 }
 
 #pragma mark - Private
-
-- (nullable NSString *)tokenFromURL:(nonnull NSURL *)url {
-    if ([url.scheme isEqualToString:CreatorRedirectUrlScheme] &&
-        [url.path isEqualToString:CreatorRedirectUrlPath])
-    {
-        NSArray<NSString *> *tokenKeyValue = [url.fragment componentsSeparatedByString:@"="];
-        if (tokenKeyValue.count == 2 &&
-            [tokenKeyValue[0] isEqualToString:IdTokenTag])
-        {
-            return tokenKeyValue[1];
-        }
-    }
-    return nil;
-}
 
 - (void)callLoginCompletionBlockWithAccessKey:(AccessKey *)ak
                                         error:(NSError *)error

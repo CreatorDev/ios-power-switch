@@ -32,49 +32,97 @@
 #import "DeviceServerApi.h"
 #import "Api.h"
 #import "GETRequest.h"
-#import "OauthRequest.h"
 #import "PUTRequest.h"
-#import "SecureDataStore.h"
-#import "IPSODigitalOutputInstance.h"
 #import "OauthManager.h"
+
+
+typedef NS_ENUM(NSInteger, LoginMethod) {
+    LoginMethodAccessKeySecret,
+    LoginMethodRefreshToken
+};
+
 
 @interface DeviceServerApi ()
 @property(nonatomic, readonly, nonnull) NSURL *deviceServerUrl;
 @property(nonatomic, strong, nullable) OauthManager *oauthManager;
 @end
 
+
 @implementation DeviceServerApi
 
 #pragma mark - Public methods
 
-- (BOOL)loginWithKey:(nonnull NSString *)key
+- (void)loginWithKey:(nonnull NSString *)key
               secret:(nonnull NSString *)secret
+      keepMeSignedIn:(BOOL)keepMeSignedIn
                error:(NSError * _Nullable * _Nullable)error
 {
-    Api *api = [self deviceServerLinksWithError:error];
+    [self loginWithMethod:LoginMethodAccessKeySecret
+                   params:@[key, secret]
+           keepMeSignedIn:keepMeSignedIn
+                    error:error];
+}
+
+- (void)loginWithRefreshToken:(nonnull NSString *)token
+               keepMeSignedIn:(BOOL)keepMeSignedIn
+                        error:(NSError * _Nullable * _Nullable)error
+{
+    [self loginWithMethod:LoginMethodRefreshToken
+                   params:@[token]
+           keepMeSignedIn:keepMeSignedIn
+                    error:error];
+}
+
+- (nullable NSURL *)authenticateUrlWithError:(NSError * _Nullable * _Nullable)error {
+    Api *api = [self deviceServerLinksWithAuthToken:nil error:error];
     if (api == nil) {
-        return NO;
+        return nil;
     }
     
-    NSURL *authenticateUrl = [NSURL URLWithString:[api linkByRel:@"authenticate"].href];
-    if (authenticateUrl == nil) {
+    return [NSURL URLWithString:[api linkByRel:@"authenticate"].href];
+}
+
+- (OauthManager *)oauthManagerWithError:(NSError * _Nullable * _Nullable)error {
+    NSURL *authenticateUrl = [self authenticateUrlWithError:error];
+    return [[OauthManager alloc] initWithAuthenticateUrl:authenticateUrl];
+}
+
+- (OauthManager *)oauthManager {
+    if (_oauthManager == nil) {
+        NSError *error = nil;
+        _oauthManager = [self oauthManagerWithError:&error];
         if (error) {
-            *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"Authenticate link not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
+            NSLog(@"ERROR getting oauth manager.");
         }
-        return NO;
     }
-    
-    self.oauthManager = [[OauthManager alloc] initWithAuthenticateUrl:authenticateUrl
-                                                            accessKey:key
-                                                               secret:secret];
-    if (self.oauthManager.oauthToken == nil) {
+    return _oauthManager;
+}
+
+- (void)loginWithMethod:(LoginMethod)method
+                 params:(NSArray<NSString *> *)params
+         keepMeSignedIn:(BOOL)keepMeSignedIn
+                  error:(NSError * _Nullable * _Nullable)error
+{
+    if (self.oauthManager == nil) {
         if (error) {
-            *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"Oauth token not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
+            *error = [NSError errorWithDomain:@"com.imgtec.example.PowerSwitch.app" code:0 userInfo:@{@"description": @"ERROR initializing Oauth Manager, wrong URL?"}];
         }
-        return NO;
+        return;
     }
+    self.oauthManager.storeRefreshToken = keepMeSignedIn;
     
-    return YES;
+    switch (method) {
+        case LoginMethodAccessKeySecret:
+            if (params.count == 2) {
+                [self.oauthManager authorizeWithAccessKey:params[0] secret:params[1] error:error];
+            }
+            break;
+        case LoginMethodRefreshToken:
+            if (params.count == 1) {
+                [self.oauthManager authorizeWithRefreshToken:params[0] error:error];
+            }
+            break;
+    }
 }
 
 - (nullable Clients *)clientsWithError:(NSError * _Nullable * _Nullable)error {
@@ -100,9 +148,14 @@
 #pragma mark - Accounts Server methods
 
 - (nullable Api *)deviceServerLinksWithError:(NSError * _Nullable * _Nullable)error {
+    return [self deviceServerLinksWithAuthToken:self.oauthManager.oauthToken error:error];
+}
+
+- (nullable Api *)deviceServerLinksWithAuthToken:(OauthToken *)oauthToken
+                                           error:(NSError * _Nullable * _Nullable)error {
     GETRequest *request = [GETRequest GETRequestWithUrl:[self deviceServerUrl]
                                                  accept:@"application/vnd.imgtec.apientrypoint+json"
-                                                   auth:self.oauthManager.oauthToken];
+                                                   auth:oauthToken];
     return [request executeWithSharedUrlSessionAndReturnClass:[Api class] error:error];
 }
 

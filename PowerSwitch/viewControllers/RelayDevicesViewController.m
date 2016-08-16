@@ -47,7 +47,7 @@
 
 @interface RelayDevicesViewController () <RelayDeviceStateChangeDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, readonly, nonnull) DataApi *dataApi;
+@property (nonatomic, strong, nonnull) DataApi *dataApi;
 @property (nonatomic, strong, nullable) NSArray<RelayDevice *> *relayDevices;
 @property (nonatomic, strong, nonnull) NSOperationQueue *pollingQueue;
 @property (nonatomic, weak, nullable) NSTimer *pollingTimer;
@@ -90,11 +90,12 @@
 #pragma - RelayDeviceStateChangeDelegate
 
 - (void)relayDeviceStateChangeForInstanceId:(nonnull NSNumber *)instanceId newState:(BOOL)state {
+    __weak typeof(self) weakSelf = self;
     RelayDevice *relayDevice = [self relayDeviceWithInstanceId:instanceId];
     if (relayDevice) {
         [self.dataApi setRelayDeviceState:relayDevice newValue:state success:nil failure:^(NSError * _Nullable error) {
              NSLog(@"ERROR setting device state: %@", error);
-            [self requestRelayDevices];
+            [weakSelf requestRelayDevices];
          }];
     }
 }
@@ -144,11 +145,6 @@
 }
 
 #pragma mark - Private (setters/getters)
-
-- (DataApi *)dataApi {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    return appDelegate.dataApi;
-}
 
 - (NSOperationQueue *)pollingQueue {
     if (_pollingQueue == nil) {

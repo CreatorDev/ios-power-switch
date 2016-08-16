@@ -31,30 +31,22 @@
 
 #import "SecureDataStore.h"
 
+
+static NSString *DeviceServerRefreshTokenId = @"DeviceServerRefreshToken";
+
+
 @implementation SecureDataStore
 
-+ (void)storeDeviceServerAccessKey:(nonnull AccessKey *)accessKey {
-    [[self class] createKeychainValue:accessKey.name forIdentifier:@"DeviceServerAccessName"];
-    [[self class] createKeychainValue:accessKey.key forIdentifier:@"DeviceServerAccessKey"];
-    [[self class] createKeychainValue:accessKey.secret forIdentifier:@"DeviceServerSecret"];
++ (void)storeRefreshToken:(nonnull NSString *)refreshToken {
+    [[self class] createKeychainValue:refreshToken forIdentifier:DeviceServerRefreshTokenId];
 }
 
-+ (void)cleanDeviceServerAccessKey {
-    [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerAccessName"];
-    [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerAccessKey"];
-    [[self class] deleteKeychainValueWithIdentifier:@"DeviceServerSecret"];
++ (void)cleanRefreshToken {
+    [[self class] deleteKeychainValueWithIdentifier:DeviceServerRefreshTokenId];
 }
 
-+ (nullable NSString *)readDeviceServerAccessName {
-    return [[self class] searchKeychainCopyMatching:@"DeviceServerAccessName"];
-}
-
-+ (nullable NSString *)readDeviceServerAccessKey {
-    return [[self class] searchKeychainCopyMatching:@"DeviceServerAccessKey"];
-}
-
-+ (nullable NSString *)readDeviceServerSecret {
-    return [[self class] searchKeychainCopyMatching:@"DeviceServerSecret"];
++ (nullable NSString *)readRefreshToken {
+    return [[self class] searchKeychainCopyMatching:DeviceServerRefreshTokenId];
 }
 
 #pragma mark - Private (Keychain)

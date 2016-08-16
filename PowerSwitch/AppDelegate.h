@@ -32,9 +32,11 @@
 @import UIKit;
 #import "AppData.h"
 #import "DataApi.h"
+#import "OpenUrlProtocol.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-@property (strong, nonatomic, nullable) UIWindow *window;
-@property (strong, nonatomic, nonnull) AppData *appData;
-@property (strong, nonatomic, nonnull) DataApi *dataApi;
+@property(strong, nonatomic, nullable) UIWindow *window;
+@property(strong, nonatomic, nonnull) NSString *authenticateToken;
+@property(readonly, nonatomic, nonnull) AppData *appData;
+@property(nonatomic, weak, nullable) id<OpenUrlProtocol> openUrlDelegate;
 @end

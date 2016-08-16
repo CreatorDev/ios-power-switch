@@ -33,8 +33,12 @@
 #import "OauthToken.h"
 
 @interface OauthManager : NSObject
-- (nonnull instancetype)initWithAuthenticateUrl:(nonnull NSURL *)url
-                                      accessKey:(nonnull NSString *)key
-                                         secret:(nonnull NSString *)secret;
+- (nonnull instancetype)initWithAuthenticateUrl:(nonnull NSURL *)url;
+@property(nonatomic, assign) BOOL storeRefreshToken;
+- (void)authorizeWithAccessKey:(nonnull NSString *)key
+                        secret:(nonnull NSString *)secret
+                         error:(NSError * _Nullable * _Nullable)error;
+- (void)authorizeWithRefreshToken:(nonnull NSString *)token
+                            error:(NSError * _Nullable * _Nullable)error;
 @property(atomic, readonly, nullable) OauthToken *oauthToken;
 @end
