@@ -29,8 +29,12 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+#import <CreatorKit/BaseRequest.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface OauthRequest : BaseRequest
++ (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
+                                      username:(nonnull NSString *)username
+                                      password:(nonnull NSString *)password;
++ (nullable OauthRequest *)oauthRequestWithUrl:(nonnull NSURL *)url
+                                  refreshToken:(nonnull NSString *)refreshToken;
 @end

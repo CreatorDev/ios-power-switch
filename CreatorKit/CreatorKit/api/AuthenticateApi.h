@@ -29,8 +29,19 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
+#import <CreatorKit/AccessKey.h>
+#import <CreatorKit/OpenUrlProtocol.h>
+#import <CreatorKit/LoginDelegate.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+typedef void(^LoginCompletionBlock)(AccessKey * _Nullable, NSError * _Nullable);
+
+@interface AuthenticateApi : NSObject <OpenUrlProtocol>
+@property(nonatomic, strong, nonnull) UIViewController *rootViewController;
+@property(nonatomic, weak) _Nullable id<LoginDelegate> loginDelegate;
+- (void)loginWithDelegate:(nonnull id<LoginDelegate>)loginDelegate
+         completionHandler:(nullable LoginCompletionBlock)completion;
+- (nullable AccessKey *)continueLoginWithToken:(nonnull NSString *)token
+                                         error:(NSError * _Nullable * _Nullable)error;
++ (nullable NSString *)tokenFromURL:(nonnull NSURL *)url redirectUrlScheme:(nonnull NSString *)scheme;
 @end

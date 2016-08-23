@@ -29,8 +29,7 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
-@end
+typedef void(^CreatorSuccessBlock)();
+typedef void(^CreatorFailureBlock)(NSError * _Nullable);

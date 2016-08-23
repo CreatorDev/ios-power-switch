@@ -29,8 +29,12 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
+#import <CreatorKit/Api.h>
+#import <CreatorKit/OauthToken.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface DeviceServerApi : NSObject
+@property(nonatomic, readonly, nullable) OauthToken *oauthToken;
+- (nullable Api *)deviceServerLinksWithAuthToken:(nullable OauthToken *)oauthToken
+                                           error:(NSError * _Nullable * _Nullable)error;
 @end

@@ -29,8 +29,11 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
+#import <CreatorKit/AccessKey.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface SecureDataStore : NSObject
++ (void)storeRefreshToken:(nonnull NSString *)refreshToken;
++ (void)cleanRefreshToken;
++ (nullable NSString *)readRefreshToken;
 @end

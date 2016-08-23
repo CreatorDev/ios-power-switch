@@ -31,12 +31,11 @@
 
 @import UIKit;
 #import "AppData.h"
-#import "DataApi.h"
-#import "OpenUrlProtocol.h"
+#import <CreatorKit/LoginDelegate.h>
+#import <CreatorKit/OpenUrlProtocol.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginDelegate>
 @property(strong, nonatomic, nullable) UIWindow *window;
-@property(strong, nonatomic, nonnull) NSString *authenticateToken;
 @property(readonly, nonatomic, nonnull) AppData *appData;
 @property(nonatomic, weak, nullable) id<OpenUrlProtocol> openUrlDelegate;
 @end

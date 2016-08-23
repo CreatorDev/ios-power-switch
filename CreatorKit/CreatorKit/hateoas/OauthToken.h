@@ -31,6 +31,9 @@
 
 #import <CreatorKit/Hateoas.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface OauthToken : Hateoas
+@property(nonatomic, strong, nonnull) NSString *accessToken;
+@property(nonatomic, strong, nullable) NSString *refreshToken;
+@property(nonatomic, strong, nonnull) NSString *tokenType;
+@property(nonatomic, strong, nonnull) NSDate *expireTime;
 @end

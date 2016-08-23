@@ -29,7 +29,7 @@
  *
  */
 
-#import "Hateoas.h"
+#import <CreatorKit/Hateoas.h>
 #import "ObjectType.h"
 #import "PageInfo.h"
 

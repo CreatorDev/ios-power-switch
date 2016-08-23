@@ -29,8 +29,11 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
+#import <CreatorKit/JsonInit.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface Link : NSObject <JsonInit>
+@property (nonatomic, strong, nonnull) NSString *rel;
+@property (nonatomic, strong, nonnull) NSString *href;
+@property (nonatomic, strong, nullable) NSString *type;
 @end

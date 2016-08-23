@@ -29,7 +29,7 @@
  *
  */
 
-#import "Hateoas.h"
+#import <CreatorKit/Hateoas.h>
 
 @interface PageInfo : Hateoas
 @property(nonatomic, strong, nonnull) NSNumber *totalCount;

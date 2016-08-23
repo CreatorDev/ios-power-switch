@@ -29,8 +29,36 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import UIKit;
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
-@end
+//! Project version number for CreatorKit.
+FOUNDATION_EXPORT double CreatorKitVersionNumber;
+
+//! Project version string for CreatorKit.
+FOUNDATION_EXPORT const unsigned char CreatorKitVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <CreatorKit/PublicHeader.h>
+
+#import <CreatorKit/LoginDelegate.h>
+#import <CreatorKit/OpenUrlProtocol.h>
+#import <CreatorKit/Typedefs.h>
+#import <CreatorKit/GlobalStyle.h>
+
+#import <CreatorKit/Api.h>
+#import <CreatorKit/AccessKey.h>
+#import <CreatorKit/Hateoas.h>
+#import <CreatorKit/JsonInit.h>
+#import <CreatorKit/Link.h>
+#import <CreatorKit/OauthToken.h>
+
+#import <CreatorKit/BaseRequest.h>
+#import <CreatorKit/GETRequest.h>
+#import <CreatorKit/POSTRequest.h>
+#import <CreatorKit/PUTRequest.h>
+
+#import <CreatorKit/DeviceServerApi.h>
+#import <CreatorKit/LoginApi.h>
+
+#import <CreatorKit/CreatorButton.h>
+#import <CreatorKit/CreatorLinkButton.h>
+#import <CreatorKit/CreatorSwitch.h>

@@ -29,8 +29,16 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
+#import <CreatorKit/OauthToken.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface OauthManager : NSObject
+- (nonnull instancetype)initWithAuthenticateUrl:(nonnull NSURL *)url;
+@property(nonatomic, assign) BOOL storeRefreshToken;
+- (void)authorizeWithAccessKey:(nonnull NSString *)key
+                        secret:(nonnull NSString *)secret
+                         error:(NSError * _Nullable * _Nullable)error;
+- (void)authorizeWithRefreshToken:(nonnull NSString *)token
+                            error:(NSError * _Nullable * _Nullable)error;
+@property(atomic, readonly, nullable) OauthToken *oauthToken;
 @end

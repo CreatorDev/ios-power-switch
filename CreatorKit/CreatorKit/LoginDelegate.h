@@ -29,8 +29,15 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@class DeviceServerApi;
+@protocol OpenUrlProtocol;
+
+@protocol LoginDelegate
+@property(nonatomic, readonly, nonnull) UIViewController *safariRootViewController;
+@property(strong, nonatomic, nonnull) NSString *authenticateToken;
+@property(strong, readonly, nonnull) NSString *creatorRedirectUrlScheme;
+@property(nonatomic, weak, nullable) id<OpenUrlProtocol> openUrlDelegate;
+- (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi;
 @end

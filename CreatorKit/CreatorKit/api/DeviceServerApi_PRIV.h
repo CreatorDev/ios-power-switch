@@ -29,8 +29,15 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface DeviceServerApi : NSObject
+- (void)loginWithKey:(nonnull NSString *)key
+              secret:(nonnull NSString *)secret
+      keepMeSignedIn:(BOOL)keepMeSignedIn
+               error:(NSError * _Nullable * _Nullable)error;
+
+- (void)loginWithRefreshToken:(nonnull NSString *)token
+               keepMeSignedIn:(BOOL)keepMeSignedIn
+                        error:(NSError * _Nullable * _Nullable)error;
 @end

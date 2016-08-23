@@ -29,8 +29,10 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import Foundation;
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@protocol LoginDelegate;
+
+@protocol OpenUrlProtocol
+- (BOOL)processOpenUrl:(nonnull NSURL *)url source:(nonnull id<LoginDelegate>)loginDelegate;
 @end

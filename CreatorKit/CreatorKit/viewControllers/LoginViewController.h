@@ -29,8 +29,9 @@
  *
  */
 
-#import <CreatorKit/Hateoas.h>
+@import UIKit;
+#import <CreatorKit/LoginDelegate.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface LoginViewController : UIViewController
+@property(nonatomic, weak) id<LoginDelegate> loginDelegate;
 @end

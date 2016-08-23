@@ -29,7 +29,7 @@
  *
  */
 
-#import "Hateoas.h"
+#import <CreatorKit/Hateoas.h>
 
 @interface Client : Hateoas
 @property(nonatomic, strong, nonnull) NSString *name;

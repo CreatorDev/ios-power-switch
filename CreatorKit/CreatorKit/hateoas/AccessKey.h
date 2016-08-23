@@ -31,6 +31,8 @@
 
 #import <CreatorKit/Hateoas.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface AccessKey : Hateoas
+@property(nonatomic, strong, nonnull) NSString *name;
+@property(nonatomic, strong, nonnull) NSString *key;
+@property(nonatomic, strong, nonnull) NSString *secret;
 @end

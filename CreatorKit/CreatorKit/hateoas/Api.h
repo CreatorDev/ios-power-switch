@@ -31,6 +31,5 @@
 
 #import <CreatorKit/Hateoas.h>
 
-@interface IPSOInstance : Hateoas
-@property(nonatomic, strong, nonnull) id json;
+@interface Api : Hateoas
 @end
