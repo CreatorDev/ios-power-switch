@@ -31,10 +31,26 @@
 
 @import Foundation;
 #import <CreatorKit/Api.h>
+#import <CreatorKit/Client.h>
+#import <CreatorKit/Clients.h>
+#import <CreatorKit/Instances.h>
+#import <CreatorKit/ObjectType.h>
+#import <CreatorKit/ObjectTypes.h>
 #import <CreatorKit/OauthToken.h>
 
 @interface DeviceServerApi : NSObject
 @property(nonatomic, readonly, nullable) OauthToken *oauthToken;
-- (nullable Api *)deviceServerLinksWithAuthToken:(nullable OauthToken *)oauthToken
-                                           error:(NSError * _Nullable * _Nullable)error;
+
+- (nullable Clients *)clientsWithError:(NSError * _Nullable * _Nullable)error;
+
+- (nullable ObjectTypes *)objectTypesForClient:(nonnull Client *)client
+                                         error:(NSError * _Nullable * _Nullable)error;
+
+- (nullable Instances *)objectInstancesForObjectType:(nonnull ObjectType *)objectType
+                                               error:(NSError * _Nullable * _Nullable)error;
+
+- (BOOL)putInstanceData:(nullable NSData *)data
+              forObject:(nonnull ObjectType *)objectType
+             instanceId:(nonnull NSNumber *)instanceId
+                  error:(NSError * _Nullable * _Nullable)error;
 @end

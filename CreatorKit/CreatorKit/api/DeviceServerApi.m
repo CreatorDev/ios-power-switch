@@ -31,7 +31,10 @@
 
 #import "DeviceServerApi_PRIV.h"
 #import "Api.h"
+#import "Instances.h"
+#import "ObjectTypes.h"
 #import "GETRequest.h"
+#import "PUTRequest.h"
 #import "OauthManager.h"
 
 
@@ -130,18 +133,79 @@ typedef NS_ENUM(NSInteger, LoginMethod) {
 
 #pragma mark - Accounts Server methods
 
-- (nullable Api *)deviceServerLinksWithAuthToken:(nullable OauthToken *)oauthToken
-                                           error:(NSError * _Nullable * _Nullable)error {
-    GETRequest *request = [GETRequest GETRequestWithUrl:[self deviceServerUrl]
-                                                 accept:@"application/vnd.imgtec.apientrypoint+json"
-                                                   auth:oauthToken];
-    return [request executeWithSharedUrlSessionAndReturnClass:[Api class] error:error];
+- (nullable Clients *)clientsWithError:(NSError * _Nullable * _Nullable)error {
+    Api *api = [self deviceServerLinksWithError:error];
+    if (api == nil) {
+        return nil;
+    }
+    
+    NSURL *clientsUrl = [NSURL URLWithString:[api linkByRel:@"clients"].href];
+    if (clientsUrl == nil) {
+        if (error) {
+            *error = [NSError errorWithDomain:@"io.creatordev.PowerSwitch.app" code:0 userInfo:@{@"description": @"Clients link not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
+        }
+        return nil;
+    }
+    
+    GETRequest *request = [GETRequest GETRequestWithUrl:clientsUrl
+                                                 accept:@"application/vnd.imgtec.clients+json"
+                                                   auth:self.oauthToken];
+    return [request executeWithSharedUrlSessionAndReturnClass:[Clients class] error:error];
+}
+
+- (nullable ObjectTypes *)objectTypesForClient:(nonnull Client *)client
+                                         error:(NSError * _Nullable * _Nullable)error
+{
+    NSURL *objectTypesUrl = [NSURL URLWithString:[client linkByRel:@"objecttypes"].href];
+    GETRequest *request = [GETRequest GETRequestWithUrl:objectTypesUrl
+                                                 accept:@"application/vnd.imgtec.objecttypes+json"
+                                                   auth:self.oauthToken];
+    return [request executeWithSharedUrlSessionAndReturnClass:[ObjectTypes class] error:error];
+}
+
+- (nullable Instances *)objectInstancesForObjectType:(nonnull ObjectType *)objectType
+                                               error:(NSError * _Nullable * _Nullable)error
+{
+    NSURL *objectInstancesUrl = [NSURL URLWithString:[objectType linkByRel:@"instances"].href];
+    NSString *accept = [NSString stringWithFormat:@"application/vnd.oma.lwm2m.ext:%@s+json", objectType.objectTypeID];
+    
+    GETRequest *request = [GETRequest GETRequestWithUrl:objectInstancesUrl accept:accept auth:self.oauthToken];
+    return [request executeWithSharedUrlSessionAndReturnClass:[Instances class] error:error];
+}
+
+- (BOOL)putInstanceData:(nullable NSData *)data
+              forObject:(nonnull ObjectType *)objectType
+             instanceId:(nonnull NSNumber *)instanceId
+                  error:(NSError * _Nullable * _Nullable)error
+{
+    NSURL *objectInstanceUrl = [NSURL URLWithString:[objectType linkByRel:@"instances"].href];
+    objectInstanceUrl = [objectInstanceUrl URLByAppendingPathComponent:instanceId.stringValue];
+    
+    NSError *err = nil;
+    PUTRequest *request = [PUTRequest PUTRequestWithUrl:objectInstanceUrl contentType:@"application/json; charset=utf-8" body:data auth:self.oauthToken];
+    [request executeWithSharedUrlSessionAndReturnClass:nil error:&err];
+    if (error) {
+        *error = err;
+    }
+    return err != nil;
 }
 
 #pragma mark - Private
 
 - (NSURL *)deviceServerUrl {
     return [NSURL URLWithString:@"https://deviceserver.creatordev.io"];
+}
+
+- (nullable Api *)deviceServerLinksWithError:(NSError * _Nullable * _Nullable)error {
+    return [self deviceServerLinksWithAuthToken:self.oauthToken error:error];
+}
+
+- (nullable Api *)deviceServerLinksWithAuthToken:(nullable OauthToken *)oauthToken
+                                           error:(NSError * _Nullable * _Nullable)error {
+    GETRequest *request = [GETRequest GETRequestWithUrl:[self deviceServerUrl]
+                                                 accept:@"application/vnd.imgtec.apientrypoint+json"
+                                                   auth:oauthToken];
+    return [request executeWithSharedUrlSessionAndReturnClass:[Api class] error:error];
 }
 
 @end

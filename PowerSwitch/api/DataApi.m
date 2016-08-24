@@ -30,7 +30,6 @@
  */
 
 #import "DataApi.h"
-#import "DeviceServerApi+PowerSwitch.h"
 
 @interface DataApi ()
 @property(nonatomic, strong, nonnull) DeviceServerApi *deviceServerApi;

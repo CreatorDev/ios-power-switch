@@ -29,9 +29,9 @@
  *
  */
 
-@import Foundation;
+#import "DeviceServerApi.h"
 
-@interface DeviceServerApi : NSObject
+@interface DeviceServerApi ()
 - (void)loginWithKey:(nonnull NSString *)key
               secret:(nonnull NSString *)secret
       keepMeSignedIn:(BOOL)keepMeSignedIn

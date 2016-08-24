@@ -12,7 +12,6 @@
 		770CC1801D460ECA0088910E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770CC17E1D460ECA0088910E /* Main.storyboard */; };
 		770CC1821D460ECA0088910E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1811D460ECA0088910E /* Assets.xcassets */; };
 		770CC1851D460ECA0088910E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1831D460ECA0088910E /* LaunchScreen.storyboard */; };
-		7729AE691D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7729AE681D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.m */; };
 		772CA1161D48E280006ECAA2 /* DataApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CA1151D48E280006ECAA2 /* DataApi.m */; };
 		773C59E21D6D9893008BDEA9 /* CreatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; };
 		773C59E31D6D9893008BDEA9 /* CreatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -72,8 +71,6 @@
 		770CC1811D460ECA0088910E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770CC1841D460ECA0088910E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770CC1861D460ECA0088910E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7729AE671D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DeviceServerApi+PowerSwitch.h"; path = "api/DeviceServerApi+PowerSwitch.h"; sourceTree = "<group>"; };
-		7729AE681D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DeviceServerApi+PowerSwitch.m"; path = "api/DeviceServerApi+PowerSwitch.m"; sourceTree = "<group>"; };
 		772CA1141D48E280006ECAA2 /* DataApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataApi.h; path = api/DataApi.h; sourceTree = "<group>"; };
 		772CA1151D48E280006ECAA2 /* DataApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataApi.m; path = api/DataApi.m; sourceTree = "<group>"; };
 		773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CreatorKit.xcodeproj; path = CreatorKit/CreatorKit.xcodeproj; sourceTree = "<group>"; };
@@ -154,8 +151,6 @@
 		770CC1AE1D460F9E0088910E /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				7729AE671D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.h */,
-				7729AE681D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.m */,
 				772CA1141D48E280006ECAA2 /* DataApi.h */,
 				772CA1151D48E280006ECAA2 /* DataApi.m */,
 			);
@@ -301,7 +296,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7729AE691D6C64F0001AEDA1 /* DeviceServerApi+PowerSwitch.m in Sources */,
 				77CA80E71D50BFF2007AE6E3 /* RelayDevicesViewController.m in Sources */,
 				7744A5171D547BCD0000E18D /* AppData.m in Sources */,
 				77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */,
