@@ -5,14 +5,21 @@ Follow steps below to integrate CreatorKit login and core functionality into you
 
 
 1. Copy CreatorKit directory into your project structure.
+
     ![](./CreatorKit_P1_files_structure.png)
-2. Move CreatorKit.xcodeproj into your project.
+2. Add CreatorKit.xcodeproj into your project.
+
     ![](./CreatorKit_P2_project_structure.png)
-3. In Project -> General -> Embedded Binaries add CreatorKit framework. It will be added also to Build Phases. 
-    ![](./CreatorKit_P3_1_add_framework.png) ![](./CreatorKit_P3_2_add_framework.png)
+3. In Project -> General -> Embedded Binaries add CreatorKit framework. It will be also added to Build Phases.
+
+    ![](./CreatorKit_P3_1_add_framework.png) 
+
+    ![](./CreatorKit_P3_2_add_framework.png)
 4. In Project -> Info -> URL Types add your URL Scheme.
+
     ![](./CreatorKit_P4_url_scheme.png)
-5. Remove Main Interface storyboard from Project -> General -> Main Interface. 
+5. Remove Main Interface storyboard from Project -> General -> Main Interface.
+
     ![](./CreatorKit_P5_remove_main_interface_storyboard.png)
 6. Adapt AppDelegate class, so it contains:
 
