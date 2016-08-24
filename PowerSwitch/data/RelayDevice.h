@@ -30,8 +30,8 @@
  */
 
 @import Foundation;
+#import <CreatorKit/ObjectType.h>
 #import "IPSODigitalOutputInstance.h"
-#import "ObjectType.h"
 
 @interface RelayDevice : NSObject
 @property(nonatomic, readonly, nonnull) ObjectType *objectType;

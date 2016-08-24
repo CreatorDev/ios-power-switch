@@ -30,10 +30,10 @@
  */
 
 #import <CreatorKit/Hateoas.h>
-#import "IPSOInstance.h"
-#import "PageInfo.h"
+#import <CreatorKit/ObjectType.h>
+#import <CreatorKit/PageInfo.h>
 
-@interface Instances : Hateoas
+@interface ObjectTypes : Hateoas
 @property(nonatomic, strong, nullable) PageInfo *pageInfo;
-@property(nonatomic, strong, nonnull) NSArray<IPSOInstance *> *items;
+@property(nonatomic, strong, nonnull) NSArray<ObjectType *> *items;
 @end

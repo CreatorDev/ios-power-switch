@@ -17,14 +17,7 @@
 		773C59E21D6D9893008BDEA9 /* CreatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; };
 		773C59E31D6D9893008BDEA9 /* CreatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 774341021D4A4CFE000D6FF2 /* RelayDevice.m */; };
-		77447A661D5B4F36006AF506 /* Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A4E1D5B4F36006AF506 /* Client.m */; };
-		77447A671D5B4F36006AF506 /* Clients.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A501D5B4F36006AF506 /* Clients.m */; };
-		77447A691D5B4F36006AF506 /* Instances.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A541D5B4F36006AF506 /* Instances.m */; };
 		77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */; };
-		77447A6B1D5B4F36006AF506 /* IPSOInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A581D5B4F36006AF506 /* IPSOInstance.m */; };
-		77447A6E1D5B4F36006AF506 /* ObjectType.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A5F1D5B4F36006AF506 /* ObjectType.m */; };
-		77447A6F1D5B4F36006AF506 /* ObjectTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A611D5B4F36006AF506 /* ObjectTypes.m */; };
-		77447A701D5B4F36006AF506 /* PageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A631D5B4F36006AF506 /* PageInfo.m */; };
 		7744A5171D547BCD0000E18D /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7744A5161D547BCD0000E18D /* AppData.m */; };
 		77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */; };
 		77CA80E51D50BFF2007AE6E3 /* GatewaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E01D50BFF2007AE6E3 /* GatewaysTableViewController.m */; };
@@ -86,22 +79,8 @@
 		773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CreatorKit.xcodeproj; path = CreatorKit/CreatorKit.xcodeproj; sourceTree = "<group>"; };
 		774341011D4A4CFE000D6FF2 /* RelayDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayDevice.h; path = data/RelayDevice.h; sourceTree = "<group>"; };
 		774341021D4A4CFE000D6FF2 /* RelayDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelayDevice.m; path = data/RelayDevice.m; sourceTree = "<group>"; };
-		77447A4D1D5B4F36006AF506 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Client.h; path = hateoas/Client.h; sourceTree = "<group>"; };
-		77447A4E1D5B4F36006AF506 /* Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Client.m; path = hateoas/Client.m; sourceTree = "<group>"; };
-		77447A4F1D5B4F36006AF506 /* Clients.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clients.h; path = hateoas/Clients.h; sourceTree = "<group>"; };
-		77447A501D5B4F36006AF506 /* Clients.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Clients.m; path = hateoas/Clients.m; sourceTree = "<group>"; };
-		77447A531D5B4F36006AF506 /* Instances.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Instances.h; path = hateoas/Instances.h; sourceTree = "<group>"; };
-		77447A541D5B4F36006AF506 /* Instances.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Instances.m; path = hateoas/Instances.m; sourceTree = "<group>"; };
 		77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSODigitalOutputInstance.h; path = hateoas/IPSODigitalOutputInstance.h; sourceTree = "<group>"; };
 		77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSODigitalOutputInstance.m; path = hateoas/IPSODigitalOutputInstance.m; sourceTree = "<group>"; };
-		77447A571D5B4F36006AF506 /* IPSOInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSOInstance.h; path = hateoas/IPSOInstance.h; sourceTree = "<group>"; };
-		77447A581D5B4F36006AF506 /* IPSOInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSOInstance.m; path = hateoas/IPSOInstance.m; sourceTree = "<group>"; };
-		77447A5E1D5B4F36006AF506 /* ObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectType.h; path = hateoas/ObjectType.h; sourceTree = "<group>"; };
-		77447A5F1D5B4F36006AF506 /* ObjectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectType.m; path = hateoas/ObjectType.m; sourceTree = "<group>"; };
-		77447A601D5B4F36006AF506 /* ObjectTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectTypes.h; path = hateoas/ObjectTypes.h; sourceTree = "<group>"; };
-		77447A611D5B4F36006AF506 /* ObjectTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectTypes.m; path = hateoas/ObjectTypes.m; sourceTree = "<group>"; };
-		77447A621D5B4F36006AF506 /* PageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageInfo.h; path = hateoas/PageInfo.h; sourceTree = "<group>"; };
-		77447A631D5B4F36006AF506 /* PageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageInfo.m; path = hateoas/PageInfo.m; sourceTree = "<group>"; };
 		7744A5151D547BCD0000E18D /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppData.h; path = data/AppData.h; sourceTree = "<group>"; };
 		7744A5161D547BCD0000E18D /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppData.m; path = data/AppData.m; sourceTree = "<group>"; };
 		77A4494E1D5DDEB000149F6E /* ProvideDataApiProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProvideDataApiProtocol.h; sourceTree = "<group>"; };
@@ -186,22 +165,8 @@
 		770CC1B51D4611BE0088910E /* Hateoas */ = {
 			isa = PBXGroup;
 			children = (
-				77447A4D1D5B4F36006AF506 /* Client.h */,
-				77447A4E1D5B4F36006AF506 /* Client.m */,
-				77447A4F1D5B4F36006AF506 /* Clients.h */,
-				77447A501D5B4F36006AF506 /* Clients.m */,
-				77447A531D5B4F36006AF506 /* Instances.h */,
-				77447A541D5B4F36006AF506 /* Instances.m */,
 				77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */,
 				77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */,
-				77447A571D5B4F36006AF506 /* IPSOInstance.h */,
-				77447A581D5B4F36006AF506 /* IPSOInstance.m */,
-				77447A5E1D5B4F36006AF506 /* ObjectType.h */,
-				77447A5F1D5B4F36006AF506 /* ObjectType.m */,
-				77447A601D5B4F36006AF506 /* ObjectTypes.h */,
-				77447A611D5B4F36006AF506 /* ObjectTypes.m */,
-				77447A621D5B4F36006AF506 /* PageInfo.h */,
-				77447A631D5B4F36006AF506 /* PageInfo.m */,
 			);
 			name = Hateoas;
 			sourceTree = "<group>";
@@ -340,19 +305,12 @@
 				77CA80E71D50BFF2007AE6E3 /* RelayDevicesViewController.m in Sources */,
 				7744A5171D547BCD0000E18D /* AppData.m in Sources */,
 				77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */,
-				77447A6E1D5B4F36006AF506 /* ObjectType.m in Sources */,
 				77CA80EA1D50C08F007AE6E3 /* RelayDeviceTableViewCell.m in Sources */,
-				77447A701D5B4F36006AF506 /* PageInfo.m in Sources */,
-				77447A6F1D5B4F36006AF506 /* ObjectTypes.m in Sources */,
 				774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */,
-				77447A671D5B4F36006AF506 /* Clients.m in Sources */,
-				77447A661D5B4F36006AF506 /* Client.m in Sources */,
 				770CC17A1D460ECA0088910E /* AppDelegate.m in Sources */,
 				770CC1771D460ECA0088910E /* main.m in Sources */,
-				77447A6B1D5B4F36006AF506 /* IPSOInstance.m in Sources */,
 				77CA80E51D50BFF2007AE6E3 /* GatewaysTableViewController.m in Sources */,
 				77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */,
-				77447A691D5B4F36006AF506 /* Instances.m in Sources */,
 				772CA1161D48E280006ECAA2 /* DataApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

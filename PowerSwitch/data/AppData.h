@@ -30,7 +30,7 @@
  */
 
 @import Foundation;
-#import "Clients.h"
+#import <CreatorKit/Clients.h>
 
 @interface AppData : NSObject
 @property(nonatomic, strong, nullable) Clients *clients;

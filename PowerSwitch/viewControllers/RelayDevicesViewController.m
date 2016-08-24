@@ -30,9 +30,9 @@
  */
 
 #import "RelayDevicesViewController.h"
+#import <CreatorKit/ObjectTypes.h>
 #import "AppDelegate.h"
 #import "DataApi.h"
-#import "ObjectTypes.h"
 #import "RelayDeviceTableViewCell.h"
 
 @interface TimerTarget : NSObject

@@ -30,10 +30,10 @@
  */
 
 #import <CreatorKit/Hateoas.h>
-#import "ObjectType.h"
-#import "PageInfo.h"
+#import <CreatorKit/Client.h>
+#import <CreatorKit/PageInfo.h>
 
-@interface ObjectTypes : Hateoas
+@interface Clients : Hateoas
 @property(nonatomic, strong, nullable) PageInfo *pageInfo;
-@property(nonatomic, strong, nonnull) NSArray<ObjectType *> *items;
+@property(nonatomic, strong, nonnull) NSArray<Client *> *items;
 @end

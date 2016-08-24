@@ -30,9 +30,9 @@
  */
 
 #import <CreatorKit/DeviceServerApi.h>
-#import "Clients.h"
-#import "ObjectTypes.h"
-#import "Instances.h"
+#import <CreatorKit/Clients.h>
+#import <CreatorKit/Instances.h>
+#import <CreatorKit/ObjectTypes.h>
 
 @interface DeviceServerApi (Other)
 - (nullable Clients *)clientsWithError:(NSError * _Nullable * _Nullable)error;

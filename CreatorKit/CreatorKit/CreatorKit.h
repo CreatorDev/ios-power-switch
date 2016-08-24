@@ -46,10 +46,17 @@ FOUNDATION_EXPORT const unsigned char CreatorKitVersionString[];
 
 #import <CreatorKit/Api.h>
 #import <CreatorKit/AccessKey.h>
+#import <CreatorKit/Client.h>
+#import <CreatorKit/Clients.h>
 #import <CreatorKit/Hateoas.h>
+#import <CreatorKit/Instances.h>
+#import <CreatorKit/IPSOInstance.h>
 #import <CreatorKit/JsonInit.h>
 #import <CreatorKit/Link.h>
 #import <CreatorKit/OauthToken.h>
+#import <CreatorKit/ObjectType.h>
+#import <CreatorKit/ObjectTypes.h>
+#import <CreatorKit/PageInfo.h>
 
 #import <CreatorKit/BaseRequest.h>
 #import <CreatorKit/GETRequest.h>
