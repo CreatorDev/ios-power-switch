@@ -30,7 +30,7 @@
  */
 
 @import UIKit;
-#import "Client.h"
+#import <CreatorKit/Client.h>
 #import "ProvideDataApiProtocol.h"
 
 @interface RelayDevicesViewController : UIViewController <ProvideDataApiProtocol>

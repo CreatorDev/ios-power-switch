@@ -30,9 +30,10 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/JsonInit.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface Link : NSObject <JsonInit>
+@property (nonatomic, strong, nonnull) NSString *rel;
+@property (nonatomic, strong, nonnull) NSString *href;
+@property (nonatomic, strong, nullable) NSString *type;
 @end

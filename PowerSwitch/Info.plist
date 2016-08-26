@@ -42,8 +42,6 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Login</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Login</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

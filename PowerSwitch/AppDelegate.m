@@ -30,23 +30,40 @@
  */
 
 #import "AppDelegate.h"
-#import "GlobalStyle.h"
-#import "AuthenticateApi.h"
+#import <CreatorKit/GlobalStyle.h>
+#import <CreatorKit/LoginApi.h>
+#import "DataApi.h"
+#import "ProvideDataApiProtocol.h"
+
+static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
 
 @interface AppDelegate ()
 @property(strong, nonatomic, nonnull) AppData *appData;
 @end
 
 @implementation AppDelegate
+@synthesize authenticateToken = _authenticateToken;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[GlobalStyle class] setupAppearance];
     
     NSURL *launchUrl = launchOptions[UIApplicationLaunchOptionsURLKey];
     if (launchUrl) {
-        self.authenticateToken = [[AuthenticateApi class] tokenFromURL:launchUrl];
+        self.authenticateToken = [[LoginApi class] tokenFromURL:launchUrl redirectUrlScheme:self.creatorRedirectUrlScheme];
     }
+    
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.window.rootViewController = [[LoginApi class] loginViewControllerWithLoginDelegate:self];
+    [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    if (self.openUrlDelegate) {
+        return [self.openUrlDelegate processOpenUrl:url source:self];
+    }
+    return NO;
 }
 
 - (AppData *)appData {
@@ -56,11 +73,22 @@
     return _appData;
 }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
-    if (self.openUrlDelegate) {
-        return [self.openUrlDelegate processOpenUrl:url];
-    }
-    return NO;
+#pragma mark - OpenUrlProtocol
+
+- (UIViewController *)safariRootViewController {
+    return self.window.rootViewController;
+}
+
+- (NSString *)creatorRedirectUrlScheme {
+    return CreatorRedirectUrlScheme;
+}
+
+- (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navVc = [mainStoryboard instantiateInitialViewController];
+    UIViewController<ProvideDataApiProtocol> *topVc = (UIViewController<ProvideDataApiProtocol> *) navVc.topViewController;
+    [topVc setDataApi:[[DataApi alloc] initWithDeviceServerApi:deviceServerApi]];
+    self.window.rootViewController = navVc;
 }
 
 @end

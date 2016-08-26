@@ -30,9 +30,14 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/OauthToken.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface BaseRequest : NSObject
+@property(nonatomic, strong, nullable) OauthToken *oauthToken;
+- (nonnull instancetype)initWithUrl:(nonnull NSURL *)url;
+- (nullable id)executeWithSharedUrlSessionAndReturnClass:(nullable Class)class
+                                                   error:(NSError * _Nullable * _Nullable)error;
+- (nullable id)executeWithUrlSession:(nonnull NSURLSession *)session
+                         returnClass:(nullable Class)class
+                               error:(NSError * _Nullable * _Nullable)error;
 @end

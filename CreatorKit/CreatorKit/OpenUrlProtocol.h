@@ -30,9 +30,9 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@protocol LoginDelegate;
+
+@protocol OpenUrlProtocol
+- (BOOL)processOpenUrl:(nonnull NSURL *)url source:(nonnull id<LoginDelegate>)loginDelegate;
 @end

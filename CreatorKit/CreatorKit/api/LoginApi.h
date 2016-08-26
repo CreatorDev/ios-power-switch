@@ -29,10 +29,28 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+@import UIKit;
+#import <CreatorKit/OpenUrlProtocol.h>
+#import <CreatorKit/Typedefs.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@class DeviceServerApi;
+
+typedef void(^LoginSuccessBlock)(DeviceServerApi * _Nonnull);
+
+@interface LoginApi : NSObject <OpenUrlProtocol>
+- (void)loginWithKeepMeSignedIn:(BOOL)keepMeSignedIn
+               loginDelegate:(nonnull id<LoginDelegate>)loginDelegate
+                        success:(nullable LoginSuccessBlock)success
+                        failure:(nullable CreatorFailureBlock)failure;
+
+- (BOOL)isSilentLoginStartPossible;
+- (void)silentLoginWithSuccess:(nullable LoginSuccessBlock)success
+                       failure:(nullable CreatorFailureBlock)failure;
+- (void)continueLoginWithToken:(nonnull NSString *)launchUrlToken
+                       success:(nullable LoginSuccessBlock)success
+                       failure:(nullable CreatorFailureBlock)failure;
+
++ (nullable NSString *)tokenFromURL:(nonnull NSURL *)url redirectUrlScheme:(nonnull NSString *)scheme;
++ (nonnull UIViewController *)loginViewControllerWithLoginDelegate:(nonnull id<LoginDelegate>)loginDelegate;
++ (void)logout;
 @end

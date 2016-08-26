@@ -30,7 +30,7 @@
  */
 
 #import "GatewayTableViewCell.h"
-#import "GlobalStyle.h"
+#import <CreatorKit/GlobalStyle.h>
 
 @interface GatewayTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;

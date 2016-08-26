@@ -29,10 +29,11 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/Hateoas.h>
+#import <CreatorKit/ObjectType.h>
+#import <CreatorKit/PageInfo.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface ObjectTypes : Hateoas
+@property(nonatomic, strong, nullable) PageInfo *pageInfo;
+@property(nonatomic, strong, nonnull) NSArray<ObjectType *> *items;
 @end

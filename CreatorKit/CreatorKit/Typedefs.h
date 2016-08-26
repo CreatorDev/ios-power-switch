@@ -30,9 +30,6 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
-@end
+typedef void(^CreatorSuccessBlock)();
+typedef void(^CreatorFailureBlock)(NSError * _Nullable);

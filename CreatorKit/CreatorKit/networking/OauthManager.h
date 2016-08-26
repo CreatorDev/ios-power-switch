@@ -30,9 +30,15 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/OauthToken.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface OauthManager : NSObject
+- (nonnull instancetype)initWithAuthenticateUrl:(nonnull NSURL *)url;
+@property(nonatomic, assign) BOOL storeRefreshToken;
+- (void)authorizeWithAccessKey:(nonnull NSString *)key
+                        secret:(nonnull NSString *)secret
+                         error:(NSError * _Nullable * _Nullable)error;
+- (void)authorizeWithRefreshToken:(nonnull NSString *)token
+                            error:(NSError * _Nullable * _Nullable)error;
+@property(atomic, readonly, nullable) OauthToken *oauthToken;
 @end

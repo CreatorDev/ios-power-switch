@@ -30,9 +30,14 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@class DeviceServerApi;
+@protocol OpenUrlProtocol;
+
+@protocol LoginDelegate
+@property(nonatomic, readonly, nonnull) UIViewController *safariRootViewController;
+@property(strong, nonatomic, nonnull) NSString *authenticateToken;
+@property(strong, readonly, nonnull) NSString *creatorRedirectUrlScheme;
+@property(nonatomic, weak, nullable) id<OpenUrlProtocol> openUrlDelegate;
+- (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi;
 @end

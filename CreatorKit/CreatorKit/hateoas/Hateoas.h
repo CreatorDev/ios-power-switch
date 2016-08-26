@@ -30,9 +30,10 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/Link.h>
+#import <CreatorKit/JsonInit.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface Hateoas : NSObject <JsonInit>
+@property(nonatomic, strong, nonnull) NSArray<Link *> *links;
+- (nullable Link *)linkByRel:(nonnull NSString *)rel;
 @end

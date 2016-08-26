@@ -29,10 +29,15 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+#import "DeviceServerApi.h"
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface DeviceServerApi ()
+- (void)loginWithKey:(nonnull NSString *)key
+              secret:(nonnull NSString *)secret
+      keepMeSignedIn:(BOOL)keepMeSignedIn
+               error:(NSError * _Nullable * _Nullable)error;
+
+- (void)loginWithRefreshToken:(nonnull NSString *)token
+               keepMeSignedIn:(BOOL)keepMeSignedIn
+                        error:(NSError * _Nullable * _Nullable)error;
 @end

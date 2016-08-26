@@ -29,10 +29,9 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+@import UIKit;
+#import <CreatorKit/LoginDelegate.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface LoginViewController : UIViewController
+@property(nonatomic, weak) id<LoginDelegate> loginDelegate;
 @end

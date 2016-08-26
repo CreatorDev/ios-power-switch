@@ -30,9 +30,10 @@
  */
 
 @import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/AccessKey.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface SecureDataStore : NSObject
++ (void)storeRefreshToken:(nonnull NSString *)refreshToken;
++ (void)cleanRefreshToken;
++ (nullable NSString *)readRefreshToken;
 @end

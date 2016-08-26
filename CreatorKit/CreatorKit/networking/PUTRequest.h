@@ -29,10 +29,12 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/BaseRequest.h>
+#import <CreatorKit/OauthToken.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface PUTRequest : BaseRequest
++ (nullable PUTRequest *)PUTRequestWithUrl:(nonnull NSURL *)url
+                               contentType:(nullable NSString *)contentType
+                                      body:(nullable NSData *)body
+                                      auth:(nullable OauthToken *)oauthToken;
 @end

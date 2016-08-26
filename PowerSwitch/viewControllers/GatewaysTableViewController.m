@@ -33,7 +33,7 @@
 #import "AppDelegate.h"
 #import "AppData.h"
 #import "DataApi.h"
-#import "LoginApi.h"
+#import <CreatorKit/LoginApi.h>
 #import "RelayDevicesViewController.h"
 #import "GatewayTableViewCell.h"
 
@@ -137,15 +137,14 @@
 }
 
 - (void)presentLoginViewController {
-    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    appDelegate.window.rootViewController = [loginStoryboard instantiateInitialViewController];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.window.rootViewController = [[LoginApi class] loginViewControllerWithLoginDelegate:appDelegate];
 }
 
 #pragma mark - Private (setters/getters)
 
 - (AppData *)appData {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     return appDelegate.appData;
 }
 

@@ -30,10 +30,10 @@
  */
 
 @import Foundation;
-#import "Clients.h"
+#import <CreatorKit/Clients.h>
+#import <CreatorKit/DeviceServerApi.h>
+#import <CreatorKit/Typedefs.h>
 #import "RelayDevice.h"
-#import "DeviceServerApi.h"
-#import "Typedefs.h"
 
 typedef void(^RequestGatewaysSuccessBlock)(Clients * _Nonnull);
 typedef void(^RelayDevicesSuccessBlock)(NSArray<RelayDevice *> * _Nonnull);
@@ -41,15 +41,15 @@ typedef void(^RelayDevicesSuccessBlock)(NSArray<RelayDevice *> * _Nonnull);
 @interface DataApi : NSObject
 - (nullable instancetype) initWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi;
 - (void)requestGatewaysWithSuccess:(nullable RequestGatewaysSuccessBlock)success
-                           failure:(nullable FailureBlock)failure;
+                           failure:(nullable CreatorFailureBlock)failure;
 
 - (void)requestRelayDevicesForClient:(nonnull Client *)client
                              success:(nullable RelayDevicesSuccessBlock)success
-                             failure:(nullable FailureBlock)failure;
+                             failure:(nullable CreatorFailureBlock)failure;
 
 - (void)setRelayDeviceState:(nonnull RelayDevice *)relayDevice
                    newValue:(BOOL)on
-                    success:(nullable SuccessBlock)success
-                    failure:(nullable FailureBlock)failure;
+                    success:(nullable CreatorSuccessBlock)success
+                    failure:(nullable CreatorFailureBlock)failure;
 
 @end

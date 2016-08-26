@@ -29,10 +29,10 @@
  *
  */
 
-@import Foundation;
-#import <CreatorKit/Clients.h>
+#import <CreatorKit/Hateoas.h>
 
-@interface AppData : NSObject
-@property(nonatomic, strong, nullable) Clients *clients;
-- (nullable Client *)clientByIdentifier:(nonnull NSString *)identifier;
+@interface AccessKey : Hateoas
+@property(nonatomic, strong, nonnull) NSString *name;
+@property(nonatomic, strong, nonnull) NSString *key;
+@property(nonatomic, strong, nonnull) NSString *secret;
 @end

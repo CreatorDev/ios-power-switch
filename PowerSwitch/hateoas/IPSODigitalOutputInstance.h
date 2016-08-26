@@ -29,7 +29,7 @@
  *
  */
 
-#import "IPSOInstance.h"
+#import <CreatorKit/IPSOInstance.h>
 
 @interface IPSODigitalOutputInstance : IPSOInstance
 @property(nonatomic, strong, nonnull) NSNumber *digitalOutputState;

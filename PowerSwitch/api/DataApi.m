@@ -56,7 +56,7 @@
 }
 
 - (void)requestGatewaysWithSuccess:(nullable RequestGatewaysSuccessBlock)success
-                           failure:(nullable FailureBlock)failure
+                           failure:(nullable CreatorFailureBlock)failure
 {
     __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
@@ -93,7 +93,7 @@
 
 - (void)requestRelayDevicesForClient:(nonnull Client *)client
                              success:(nullable RelayDevicesSuccessBlock)success
-                             failure:(nullable FailureBlock)failure
+                             failure:(nullable CreatorFailureBlock)failure
 {
     __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
@@ -141,8 +141,8 @@
 
 - (void)setRelayDeviceState:(nonnull RelayDevice *)relayDevice
                    newValue:(BOOL)on
-                    success:(nullable SuccessBlock)success
-                    failure:(nullable FailureBlock)failure
+                    success:(nullable CreatorSuccessBlock)success
+                    failure:(nullable CreatorFailureBlock)failure
 {
     __weak typeof(self) weakSelf = self;
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
