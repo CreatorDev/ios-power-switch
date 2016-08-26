@@ -27,8 +27,8 @@ Follow steps below to integrate CreatorKit login and core functionality into you
     // AppDelegate.h
 
     @import UIKit;
-    #import <CreatorLogin/LoginDelegate.h>
-    #import <CreatorLogin/OpenUrlProtocol.h>
+    #import <CreatorKit/LoginDelegate.h>
+    #import <CreatorKit/OpenUrlProtocol.h>
 
     @interface AppDelegate : UIResponder <UIApplicationDelegate, LoginDelegate>
     @property (strong, nonatomic, nonnull) UIWindow *window;
