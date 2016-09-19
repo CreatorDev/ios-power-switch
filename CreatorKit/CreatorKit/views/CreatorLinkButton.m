@@ -30,6 +30,7 @@
  */
 
 #import "CreatorLinkButton.h"
+#import "CreatorKitFont.h"
 
 @implementation CreatorLinkButton
 
@@ -39,7 +40,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:self.titleLabel.font.pointSize];
+        self.titleLabel.font = [[CreatorKitFont class] creatorKitFontWithName:@"Roboto-Regular" size:self.titleLabel.font.pointSize];
     }
     return self;
 }

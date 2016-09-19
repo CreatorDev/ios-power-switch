@@ -96,37 +96,41 @@
                              failure:(nullable CreatorFailureBlock)failure
 {
     __weak typeof(self) weakSelf = self;
+    void (^failureBlock)(NSError *error) = ^(NSError *error) {
+        if (failure) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                failure(error);
+            }];
+        }
+    };
+
     [self.networkQueue addOperation:[NSBlockOperation blockOperationWithBlock:^{
         NSError *error = nil;
         ObjectTypes *objectTypes = [weakSelf.deviceServerApi objectTypesForClient:client error:&error];
         if (error || objectTypes == nil) {
-            if (failure) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    failure(error);
-                }];
-            }
+            failureBlock(error);
             return;
         }
         
         NSMutableArray<RelayDevice *> *relayDevices = [NSMutableArray new];
-        NSUInteger instanceId = 0;
         for (ObjectType *objectType in objectTypes.items) {
             NSString *IPSODigitalOutputObjectID = [[RelayDevice class] IPSOObjectID];
             if ([objectType.objectTypeID isEqualToString:IPSODigitalOutputObjectID]) {
                 Instances *instances = [weakSelf.deviceServerApi objectInstancesForObjectType:objectType error:&error];
                 if (error || instances == nil) {
-                    if (failure) {
-                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            failure(error);
-                        }];
-                    }
+                    failureBlock(error);
                     return;
                 }
                 
                 for (IPSOInstance *instance in instances.items) {
-                    IPSODigitalOutputInstance *digitalOutputInstance = [[IPSODigitalOutputInstance alloc] initWithJson:instance.json];
-                    RelayDevice *relayDevice = [[RelayDevice alloc] initWithObjectType:objectType instanceId:@(instanceId) resources:digitalOutputInstance];
-                    [relayDevices addObject:relayDevice];
+                    error = nil;
+                    RelayDevice *relayDevice = [self relayDeviceFromIPSOInstanceJson:instance.json objectType:objectType error:&error];
+                    if (relayDevice) {
+                        [relayDevices addObject:relayDevice];
+                    } else {
+                        failureBlock(error);
+                        return;
+                    }
                 }
             }
         }
@@ -137,6 +141,25 @@
             }];
         }
     }]];
+}
+
+- (nullable RelayDevice *)relayDeviceFromIPSOInstanceJson:(id)json
+                                               objectType:(ObjectType *)objectType
+                                                    error:(NSError **)error
+{
+    IPSODigitalOutputInstance *digitalOutputInstance = [[IPSODigitalOutputInstance alloc] initWithJson:json];
+    
+    NSNumber *instanceId = nil;
+    if ([json isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *jsonDict = (NSDictionary *)json;
+        instanceId = jsonDict[@"InstanceID"];
+    }
+    if (instanceId == nil) {
+        *error = [NSError errorWithDomain:@"io.creatordev.PowerSwitch.app" code:0 userInfo:@{@"description": @"InstanceID not present in IPSO object."}];
+        return nil;
+    }
+    
+    return [[RelayDevice alloc] initWithObjectType:objectType instanceId:instanceId resources:digitalOutputInstance];
 }
 
 - (void)setRelayDeviceState:(nonnull RelayDevice *)relayDevice

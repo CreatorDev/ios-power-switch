@@ -1,6 +1,6 @@
-# CreatorKit framework integration with new Xcode project 
 ![](./creator_logo.png)
----
+
+# CreatorKit framework integration with new Xcode project 
 Follow steps below to integrate CreatorKit login and core functionality into your project.
 
 

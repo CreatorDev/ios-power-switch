@@ -29,6 +29,6 @@
  *
  */
 
-@protocol JsonInit<NSObject>
+@protocol JsonInit
 - (nullable instancetype)initWithJson:(nonnull id)json;
 @end

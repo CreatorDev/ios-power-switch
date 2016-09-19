@@ -29,44 +29,9 @@
  *
  */
 
-#import "IPSODigitalOutputInstance.h"
+@import Foundation;
+#import <CreatorKit/IPSOBaseSensorInstance.h>
+#import <CreatorKit/IPSOObjectIdProtocol.h>
 
-@implementation IPSODigitalOutputInstance
-
-- (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"IPSODigitalOutputInstance: (digital output state: %@)", self.digitalOutputState];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, [super description]];
-    }
-    
-    return mainStr;
-}
-
-#pragma mark - JsonInit protocol
-
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
-    if (self) {
-        if (NO == [self parseIPSODigitalOutputInstanceJson:json]) {
-            self = nil;
-        }
-    }
-    return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseIPSODigitalOutputInstanceJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"DigitalOutputState"] isKindOfClass:[NSNumber class]])
-        {
-            self.digitalOutputState = json[@"DigitalOutputState"];
-        } else {
-            NSLog(@"%@ In IPSODigitalOutputInstance, wrong type of DigitalOutputState.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
-}
-
+@interface IPSOTemperatureInstance : IPSOBaseSensorInstance <IPSOObjectIdProtocol>
 @end

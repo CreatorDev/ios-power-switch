@@ -1,6 +1,6 @@
-# Power switch
 ![](docs/creator_logo.png)
----
+
+# Power switch iOS application
 This project is a simple iOS application for controlling relay
 through LWM2M protocol.
 It is a complementary application to a 'relay-gateway' project

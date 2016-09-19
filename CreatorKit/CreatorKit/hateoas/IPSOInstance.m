@@ -38,7 +38,7 @@
 - (nullable instancetype)initWithJson:(nonnull id)json {
     self = [super initWithJson:json];
     if (self) {
-        if (NO == [self parseIPSOInstanceJson:json]) {
+        if (NO == [self parseIPSOInstanceJson:json serialisationData:nil]) {
             self = nil;
         }
     }
@@ -47,9 +47,22 @@
 
 #pragma mark - Private
 
-- (BOOL)parseIPSOInstanceJson:(nonnull id)json {
+- (BOOL)parseIPSOInstanceJson:(nonnull id)json serialisationData:(nullable NSArray<ResourceSerializationData *> *)serialisationData {
     if ([json isKindOfClass:[NSDictionary class]]) {
-        self.json = json;
+        if (serialisationData) {
+            for (ResourceSerializationData *resourceSerializationData in serialisationData) {
+                id value = json[resourceSerializationData.serialisationName];
+                if ( value && [value isKindOfClass:resourceSerializationData.dataType]) {
+                    [self setValue:value forKey:resourceSerializationData.localPropertyName];
+                } else {
+                    if (resourceSerializationData.mandatory) {
+                        return NO;
+                    }
+                }
+            }
+        } else {
+            self.json = json;
+        }
     } else {
         NSLog(@"%@ In IPSOInstance, wrong type of json.", NSStringFromSelector(_cmd));
         return NO;

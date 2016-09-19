@@ -46,7 +46,7 @@
     }
     
     if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, [super description]];
+        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
     }
     
     return [mainStr copy];

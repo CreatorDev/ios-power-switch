@@ -30,7 +30,9 @@
  */
 
 #import <CreatorKit/Hateoas.h>
+#import <CreatorKit/ResourceSerializationData.h>
 
 @interface IPSOInstance : Hateoas
 @property(nonatomic, strong, nonnull) id json;
+- (BOOL)parseIPSOInstanceJson:(nonnull id)json serialisationData:(nullable NSArray<ResourceSerializationData *> *)serialisationData;
 @end

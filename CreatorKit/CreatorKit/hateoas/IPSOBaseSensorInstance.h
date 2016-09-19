@@ -29,44 +29,13 @@
  *
  */
 
-#import "ObjectType.h"
+@import Foundation;
+#import <CreatorKit/IPSOInstance.h>
 
-@implementation ObjectType
-
-- (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
-    }
-    
-    return mainStr;
-}
-
-#pragma mark - JsonInit protocol
-
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
-    if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
-            self = nil;
-        }
-    }
-    return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
-}
-
+@interface IPSOBaseSensorInstance : IPSOInstance
+@property(nonatomic, strong, nonnull) NSNumber *value;
+@property(nonatomic, strong, nullable) NSNumber *minMeasuredValue;
+@property(nonatomic, strong, nullable) NSNumber *maxMeasuredValue;
+@property(nonatomic, strong, nullable) NSString *unit;
+@property(nonatomic, strong, nullable) NSString *applicationType;
 @end
