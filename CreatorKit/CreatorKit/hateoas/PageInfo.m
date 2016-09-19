@@ -36,7 +36,7 @@
 - (NSString *)description {
     NSString *mainStr = [NSString stringWithFormat:@"PageInfo: (startIndex: %@, itemsCount: %@, totalCount: %@)", self.startIndex, self.itemsCount, self.totalCount];
     if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, [super description]];
+        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
     }
     
     return mainStr;

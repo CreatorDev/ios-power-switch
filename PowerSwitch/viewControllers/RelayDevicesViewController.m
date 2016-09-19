@@ -30,7 +30,7 @@
  */
 
 #import "RelayDevicesViewController.h"
-#import <CreatorKit/ObjectTypes.h>
+#import <CreatorKit/CreatorKit.h>
 #import "AppDelegate.h"
 #import "DataApi.h"
 #import "RelayDeviceTableViewCell.h"
@@ -59,11 +59,21 @@
     [super viewDidLoad];
     self.title = self.client.name;
     [self requestRelayDevices];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
     [self startPollingTimer];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self killPollingTimer];
+}
+
 - (void)dealloc {
-    [self.pollingTimer invalidate];
+    [self killPollingTimer];
 }
 
 #pragma mark - UITableViewDataSource
@@ -142,6 +152,11 @@
         timerTarget.realTarget = self;
         self.pollingTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:timerTarget selector:@selector(pollingTimerFired:) userInfo:nil repeats:YES];
     };
+}
+
+- (void)killPollingTimer {
+    [self.pollingTimer invalidate];
+    self.pollingTimer = nil;
 }
 
 #pragma mark - Private (setters/getters)

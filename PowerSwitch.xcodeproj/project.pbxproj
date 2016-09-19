@@ -13,35 +13,27 @@
 		770CC1821D460ECA0088910E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1811D460ECA0088910E /* Assets.xcassets */; };
 		770CC1851D460ECA0088910E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770CC1831D460ECA0088910E /* LaunchScreen.storyboard */; };
 		772CA1161D48E280006ECAA2 /* DataApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CA1151D48E280006ECAA2 /* DataApi.m */; };
-		773C59E21D6D9893008BDEA9 /* CreatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; };
-		773C59E31D6D9893008BDEA9 /* CreatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 774341021D4A4CFE000D6FF2 /* RelayDevice.m */; };
-		77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */; };
 		7744A5171D547BCD0000E18D /* AppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7744A5161D547BCD0000E18D /* AppData.m */; };
 		77CA80DE1D50BFCA007AE6E3 /* GatewayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */; };
 		77CA80E51D50BFF2007AE6E3 /* GatewaysTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E01D50BFF2007AE6E3 /* GatewaysTableViewController.m */; };
 		77CA80E71D50BFF2007AE6E3 /* RelayDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E41D50BFF2007AE6E3 /* RelayDevicesViewController.m */; };
 		77CA80EA1D50C08F007AE6E3 /* RelayDeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77CA80E91D50C08F007AE6E3 /* RelayDeviceTableViewCell.m */; };
+		77F949891D8FCFFB0070275E /* CreatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F949881D8FCFC30070275E /* CreatorKit.framework */; };
+		77F9498A1D8FCFFB0070275E /* CreatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 77F949881D8FCFC30070275E /* CreatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		773C594D1D6D97EC008BDEA9 /* PBXContainerItemProxy */ = {
+		77F949871D8FCFC30070275E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */;
+			containerPortal = 77F949831D8FCFC30070275E /* CreatorKit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 773C593E1D6D97D1008BDEA9;
 			remoteInfo = CreatorKit;
 		};
-		773C59DF1D6D9885008BDEA9 /* PBXContainerItemProxy */ = {
+		77F9498B1D8FCFFB0070275E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 773C593D1D6D97D1008BDEA9;
-			remoteInfo = CreatorKit;
-		};
-		773C59E41D6D9893008BDEA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */;
+			containerPortal = 77F949831D8FCFC30070275E /* CreatorKit.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 773C593D1D6D97D1008BDEA9;
 			remoteInfo = CreatorKit;
@@ -55,7 +47,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				773C59E31D6D9893008BDEA9 /* CreatorKit.framework in Embed Frameworks */,
+				77F9498A1D8FCFFB0070275E /* CreatorKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,14 +65,11 @@
 		770CC1861D460ECA0088910E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		772CA1141D48E280006ECAA2 /* DataApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataApi.h; path = api/DataApi.h; sourceTree = "<group>"; };
 		772CA1151D48E280006ECAA2 /* DataApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataApi.m; path = api/DataApi.m; sourceTree = "<group>"; };
-		773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CreatorKit.xcodeproj; path = CreatorKit/CreatorKit.xcodeproj; sourceTree = "<group>"; };
 		774341011D4A4CFE000D6FF2 /* RelayDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayDevice.h; path = data/RelayDevice.h; sourceTree = "<group>"; };
 		774341021D4A4CFE000D6FF2 /* RelayDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelayDevice.m; path = data/RelayDevice.m; sourceTree = "<group>"; };
-		77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPSODigitalOutputInstance.h; path = hateoas/IPSODigitalOutputInstance.h; sourceTree = "<group>"; };
-		77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IPSODigitalOutputInstance.m; path = hateoas/IPSODigitalOutputInstance.m; sourceTree = "<group>"; };
 		7744A5151D547BCD0000E18D /* AppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppData.h; path = data/AppData.h; sourceTree = "<group>"; };
 		7744A5161D547BCD0000E18D /* AppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppData.m; path = data/AppData.m; sourceTree = "<group>"; };
-		77A4494E1D5DDEB000149F6E /* ProvideDataApiProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProvideDataApiProtocol.h; sourceTree = "<group>"; };
+		77A4494E1D5DDEB000149F6E /* DataApiProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataApiProtocol.h; sourceTree = "<group>"; };
 		77CA80DC1D50BFCA007AE6E3 /* GatewayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GatewayTableViewCell.h; path = views/GatewayTableViewCell.h; sourceTree = "<group>"; };
 		77CA80DD1D50BFCA007AE6E3 /* GatewayTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GatewayTableViewCell.m; path = views/GatewayTableViewCell.m; sourceTree = "<group>"; };
 		77CA80DF1D50BFF2007AE6E3 /* GatewaysTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GatewaysTableViewController.h; path = viewControllers/GatewaysTableViewController.h; sourceTree = "<group>"; };
@@ -89,6 +78,7 @@
 		77CA80E41D50BFF2007AE6E3 /* RelayDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelayDevicesViewController.m; path = viewControllers/RelayDevicesViewController.m; sourceTree = "<group>"; };
 		77CA80E81D50C08F007AE6E3 /* RelayDeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelayDeviceTableViewCell.h; path = views/RelayDeviceTableViewCell.h; sourceTree = "<group>"; };
 		77CA80E91D50C08F007AE6E3 /* RelayDeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RelayDeviceTableViewCell.m; path = views/RelayDeviceTableViewCell.m; sourceTree = "<group>"; };
+		77F949831D8FCFC30070275E /* CreatorKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CreatorKit.xcodeproj; path = CreatorKit/CreatorKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				773C59E21D6D9893008BDEA9 /* CreatorKit.framework in Frameworks */,
+				77F949891D8FCFFB0070275E /* CreatorKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +96,6 @@
 		770CC1691D460ECA0088910E = {
 			isa = PBXGroup;
 			children = (
-				773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */,
 				770CC1741D460ECA0088910E /* PowerSwitch */,
 				770CC1731D460ECA0088910E /* Products */,
 			);
@@ -123,15 +112,15 @@
 		770CC1741D460ECA0088910E /* PowerSwitch */ = {
 			isa = PBXGroup;
 			children = (
+				77F949831D8FCFC30070275E /* CreatorKit.xcodeproj */,
 				770CC1781D460ECA0088910E /* AppDelegate.h */,
 				770CC1791D460ECA0088910E /* AppDelegate.m */,
-				77A4494E1D5DDEB000149F6E /* ProvideDataApiProtocol.h */,
+				77A4494E1D5DDEB000149F6E /* DataApiProtocol.h */,
 				770CC17E1D460ECA0088910E /* Main.storyboard */,
 				770CC1811D460ECA0088910E /* Assets.xcassets */,
 				770CC1831D460ECA0088910E /* LaunchScreen.storyboard */,
 				770CC1AE1D460F9E0088910E /* Api */,
 				772CA1101D48E209006ECAA2 /* Data */,
-				770CC1B51D4611BE0088910E /* Hateoas */,
 				77CA80DB1D50BF9D007AE6E3 /* View Controllers */,
 				77CA80D11D50BF67007AE6E3 /* Views */,
 				770CC1861D460ECA0088910E /* Info.plist */,
@@ -157,15 +146,6 @@
 			name = Api;
 			sourceTree = "<group>";
 		};
-		770CC1B51D4611BE0088910E /* Hateoas */ = {
-			isa = PBXGroup;
-			children = (
-				77447A551D5B4F36006AF506 /* IPSODigitalOutputInstance.h */,
-				77447A561D5B4F36006AF506 /* IPSODigitalOutputInstance.m */,
-			);
-			name = Hateoas;
-			sourceTree = "<group>";
-		};
 		772CA1101D48E209006ECAA2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,14 +155,6 @@
 				774341021D4A4CFE000D6FF2 /* RelayDevice.m */,
 			);
 			name = Data;
-			sourceTree = "<group>";
-		};
-		773C594A1D6D97E6008BDEA9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		77CA80D11D50BF67007AE6E3 /* Views */ = {
@@ -207,6 +179,14 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		77F949841D8FCFC30070275E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77F949881D8FCFC30070275E /* CreatorKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -222,8 +202,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				773C59E01D6D9885008BDEA9 /* PBXTargetDependency */,
-				773C59E51D6D9893008BDEA9 /* PBXTargetDependency */,
+				77F9498C1D8FCFFB0070275E /* PBXTargetDependency */,
 			);
 			name = PowerSwitch;
 			productName = PowerSwitch;
@@ -236,7 +215,7 @@
 		770CC16A1D460ECA0088910E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Rafal Baranowski";
 				TargetAttributes = {
 					770CC1711D460ECA0088910E = {
@@ -257,8 +236,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 773C594A1D6D97E6008BDEA9 /* Products */;
-					ProjectRef = 773C59491D6D97E6008BDEA9 /* CreatorKit.xcodeproj */;
+					ProductGroup = 77F949841D8FCFC30070275E /* Products */;
+					ProjectRef = 77F949831D8FCFC30070275E /* CreatorKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -269,11 +248,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		773C594E1D6D97EC008BDEA9 /* CreatorKit.framework */ = {
+		77F949881D8FCFC30070275E /* CreatorKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CreatorKit.framework;
-			remoteRef = 773C594D1D6D97EC008BDEA9 /* PBXContainerItemProxy */;
+			remoteRef = 77F949871D8FCFC30070275E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -298,7 +277,6 @@
 			files = (
 				77CA80E71D50BFF2007AE6E3 /* RelayDevicesViewController.m in Sources */,
 				7744A5171D547BCD0000E18D /* AppData.m in Sources */,
-				77447A6A1D5B4F36006AF506 /* IPSODigitalOutputInstance.m in Sources */,
 				77CA80EA1D50C08F007AE6E3 /* RelayDeviceTableViewCell.m in Sources */,
 				774341031D4A4CFE000D6FF2 /* RelayDevice.m in Sources */,
 				770CC17A1D460ECA0088910E /* AppDelegate.m in Sources */,
@@ -312,15 +290,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		773C59E01D6D9885008BDEA9 /* PBXTargetDependency */ = {
+		77F9498C1D8FCFFB0070275E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CreatorKit;
-			targetProxy = 773C59DF1D6D9885008BDEA9 /* PBXContainerItemProxy */;
-		};
-		773C59E51D6D9893008BDEA9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CreatorKit;
-			targetProxy = 773C59E41D6D9893008BDEA9 /* PBXContainerItemProxy */;
+			targetProxy = 77F9498B1D8FCFFB0070275E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -358,8 +331,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -403,8 +378,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

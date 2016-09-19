@@ -30,7 +30,7 @@
  */
 
 @import UIKit;
-#import "ProvideDataApiProtocol.h"
+#import "DataApiProtocol.h"
 
-@interface GatewaysTableViewController : UITableViewController <ProvideDataApiProtocol>
+@interface GatewaysTableViewController : UITableViewController <DataApiProtocol>
 @end

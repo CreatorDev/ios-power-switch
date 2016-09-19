@@ -29,8 +29,15 @@
  *
  */
 
-#import <CreatorKit/IPSOInstance.h>
+@import Foundation;
 
-@interface IPSODigitalOutputInstance : IPSOInstance
-@property(nonatomic, strong, nonnull) NSNumber *digitalOutputState;
+@interface ResourceSerializationData: NSObject
+@property(nonatomic, strong, nonnull) NSString *serialisationName;
+@property(nonatomic, strong, nonnull) Class dataType;
+@property(nonatomic, strong, nonnull) NSString *localPropertyName;
+@property(nonatomic, assign) BOOL mandatory;
+- (nonnull instancetype)initWithSerialisationName:(nonnull NSString *)serialisationName
+                                         dataType:(_Nonnull Class)dataType
+                                localPropertyName:(nonnull NSString *)localPropertyName
+                                        mandatory:(BOOL)mandatory;
 @end

@@ -29,12 +29,12 @@
  *
  */
 
-#import "ObjectType.h"
+#import "IPSODevice.h"
 
-@implementation ObjectType
+@implementation IPSODevice
 
 - (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
+    NSString *mainStr = [NSString stringWithFormat:@"IPSODevice: (serial number: %@)", self.serialNumber];
     if (self.links.count > 0) {
         return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
     }
@@ -42,31 +42,26 @@
     return mainStr;
 }
 
+- (NSArray<ResourceSerializationData *> *)serializationData {
+    return @[[[ResourceSerializationData alloc] initWithSerialisationName:@"SerialNumber" dataType:[NSString class] localPropertyName:@"serialNumber" mandatory:NO]];
+}
+
 #pragma mark - JsonInit protocol
 
 - (nullable instancetype)initWithJson:(nonnull id)json {
     self = [super initWithJson:json];
     if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
+        if (NO == [self parseIPSOInstanceJson:json serialisationData:[self serializationData]]) {
             self = nil;
         }
     }
     return self;
 }
 
-#pragma mark - Private
+#pragma mark - IPSOObjectIdProtocol
 
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
++ (NSString *)IPSOObjectID {
+    return @"3";
 }
 
 @end

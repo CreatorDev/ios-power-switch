@@ -36,6 +36,7 @@
 #import "GETRequest.h"
 #import "PUTRequest.h"
 #import "OauthManager.h"
+#import "IPSODevice.h"
 
 
 typedef NS_ENUM(NSInteger, LoginMethod) {
@@ -142,7 +143,7 @@ typedef NS_ENUM(NSInteger, LoginMethod) {
     NSURL *clientsUrl = [NSURL URLWithString:[api linkByRel:@"clients"].href];
     if (clientsUrl == nil) {
         if (error) {
-            *error = [NSError errorWithDomain:@"io.creatordev.PowerSwitch.app" code:0 userInfo:@{@"description": @"Clients link not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
+            *error = [NSError errorWithDomain:@"io.creatordev.CreatorKit" code:0 userInfo:@{@"description": @"Clients link not present.", @"method": NSStringFromSelector(_cmd), @"api": api.description}];
         }
         return nil;
     }
@@ -167,7 +168,14 @@ typedef NS_ENUM(NSInteger, LoginMethod) {
                                                error:(NSError * _Nullable * _Nullable)error
 {
     NSURL *objectInstancesUrl = [NSURL URLWithString:[objectType linkByRel:@"instances"].href];
-    NSString *accept = [NSString stringWithFormat:@"application/vnd.oma.lwm2m.ext:%@s+json", objectType.objectTypeID];
+
+    NSString *mimeAcceptSubstr = nil;
+    if ([objectType.objectTypeID isEqualToString:[[IPSODevice class] IPSOObjectID]]) {
+        mimeAcceptSubstr = @"devices";
+    } else {
+        mimeAcceptSubstr = [NSString stringWithFormat:@"ext:%@s", objectType.objectTypeID];
+    }
+    NSString *accept = [NSString stringWithFormat:@"application/vnd.oma.lwm2m.%@+json", mimeAcceptSubstr];
     
     GETRequest *request = [GETRequest GETRequestWithUrl:objectInstancesUrl accept:accept auth:self.oauthToken];
     return [request executeWithSharedUrlSessionAndReturnClass:[Instances class] error:error];

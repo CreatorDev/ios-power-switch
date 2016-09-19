@@ -29,17 +29,34 @@
  *
  */
 
-#import "ObjectType.h"
+#import "IPSOBaseSensorInstance.h"
 
-@implementation ObjectType
+@implementation IPSOBaseSensorInstance
 
 - (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
+    NSMutableString *desc = [NSMutableString new];
+    [desc appendString:@"(Resources:[\n"];
+    for (ResourceSerializationData *resourceSerializationData in [self serializationData]) {
+        id value = [self valueForKey:resourceSerializationData.localPropertyName];
+        if (value) {
+            [desc appendString:[NSString stringWithFormat:@"(%@: %@)\n", resourceSerializationData.localPropertyName, value]];
+        }
+    }
+    [desc appendString:@"])"];
+    
     if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
+        return [NSString stringWithFormat:@"{%@\n%@}", desc, super.description];
     }
     
-    return mainStr;
+    return [desc copy];
+}
+
+- (NSArray<ResourceSerializationData *> *)serializationData {
+    return @[[[ResourceSerializationData alloc] initWithSerialisationName:@"SensorValue" dataType:[NSNumber class] localPropertyName:@"value" mandatory:YES],
+             [[ResourceSerializationData alloc] initWithSerialisationName:@"MinMeasuredValue" dataType:[NSNumber class] localPropertyName:@"minMeasuredValue" mandatory:NO],
+             [[ResourceSerializationData alloc] initWithSerialisationName:@"MaxMeasuredValue" dataType:[NSNumber class] localPropertyName:@"maxMeasuredValue" mandatory:NO],
+             [[ResourceSerializationData alloc] initWithSerialisationName:@"SensorUnits" dataType:[NSString class] localPropertyName:@"unit" mandatory:NO],
+             [[ResourceSerializationData alloc] initWithSerialisationName:@"ApplicationType" dataType:[NSString class] localPropertyName:@"applicationType" mandatory:NO]];
 }
 
 #pragma mark - JsonInit protocol
@@ -47,26 +64,11 @@
 - (nullable instancetype)initWithJson:(nonnull id)json {
     self = [super initWithJson:json];
     if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
+        if (NO == [self parseIPSOInstanceJson:json serialisationData:[self serializationData]]) {
             self = nil;
         }
     }
     return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
 }
 
 @end

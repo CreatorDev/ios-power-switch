@@ -30,8 +30,8 @@
  */
 
 @import Foundation;
-#import "DataApi.h"
+#import <CreatorKit/IPSOBaseSensorInstance.h>
+#import <CreatorKit/IPSOObjectIdProtocol.h>
 
-@protocol ProvideDataApiProtocol
-- (void)setDataApi:(nonnull DataApi *)dataApi;
+@interface IPSOPowerInstance : IPSOBaseSensorInstance <IPSOObjectIdProtocol>
 @end

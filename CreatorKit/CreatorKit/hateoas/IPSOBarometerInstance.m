@@ -29,44 +29,18 @@
  *
  */
 
-#import "ObjectType.h"
+#import "IPSOBarometerInstance.h"
 
-@implementation ObjectType
+@implementation IPSOBarometerInstance
 
 - (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
-    }
-    
-    return mainStr;
+    return [NSString stringWithFormat:@"IPSOBarometerInstance: %@", super.description];
 }
 
-#pragma mark - JsonInit protocol
+#pragma mark - IPSOObjectIdProtocol
 
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
-    if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
-            self = nil;
-        }
-    }
-    return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
++ (NSString *)IPSOObjectID {
+    return @"3315";
 }
 
 @end

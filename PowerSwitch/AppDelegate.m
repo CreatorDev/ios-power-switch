@@ -30,10 +30,9 @@
  */
 
 #import "AppDelegate.h"
-#import <CreatorKit/GlobalStyle.h>
-#import <CreatorKit/LoginApi.h>
+#import <CreatorKit/CreatorKit.h>
 #import "DataApi.h"
-#import "ProvideDataApiProtocol.h"
+#import "DataApiProtocol.h"
 
 static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
 
@@ -86,8 +85,8 @@ static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
 - (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *navVc = [mainStoryboard instantiateInitialViewController];
-    UIViewController<ProvideDataApiProtocol> *topVc = (UIViewController<ProvideDataApiProtocol> *) navVc.topViewController;
-    [topVc setDataApi:[[DataApi alloc] initWithDeviceServerApi:deviceServerApi]];
+    id<DataApiProtocol> dataApiReceiver = (id<DataApiProtocol>) navVc.topViewController;
+    [dataApiReceiver setDataApi:[[DataApi alloc] initWithDeviceServerApi:deviceServerApi]];
     self.window.rootViewController = navVc;
 }
 

@@ -30,7 +30,7 @@
  */
 
 #import "RelayDeviceTableViewCell.h"
-#import <CreatorKit/GlobalStyle.h>
+#import <CreatorKit/CreatorKit.h>
 
 @interface RelayDeviceTableViewCell ()
 @property (weak, nonatomic, nullable) IBOutlet UILabel *infoLabel;

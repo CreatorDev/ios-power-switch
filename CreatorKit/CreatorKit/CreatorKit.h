@@ -37,20 +37,29 @@ FOUNDATION_EXPORT double CreatorKitVersionNumber;
 //! Project version string for CreatorKit.
 FOUNDATION_EXPORT const unsigned char CreatorKitVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <CreatorKit/PublicHeader.h>
-
 #import <CreatorKit/LoginDelegate.h>
 #import <CreatorKit/OpenUrlProtocol.h>
 #import <CreatorKit/Typedefs.h>
 #import <CreatorKit/GlobalStyle.h>
 
+#import <CreatorKit/ResourceSerializationData.h>
 #import <CreatorKit/Api.h>
 #import <CreatorKit/AccessKey.h>
 #import <CreatorKit/Client.h>
 #import <CreatorKit/Clients.h>
 #import <CreatorKit/Hateoas.h>
 #import <CreatorKit/Instances.h>
+#import <CreatorKit/IPSOBaseSensorInstance.h>
+#import <CreatorKit/IPSOBarometerInstance.h>
+#import <CreatorKit/IPSOConcentrationInstance.h>
+#import <CreatorKit/IPSODevice.h>
+#import <CreatorKit/IPSODigitalOutputInstance.h>
+#import <CreatorKit/IPSODistanceInstance.h>
+#import <CreatorKit/IPSOHumidityInstance.h>
 #import <CreatorKit/IPSOInstance.h>
+#import <CreatorKit/IPSOObjectIdProtocol.h>
+#import <CreatorKit/IPSOPowerInstance.h>
+#import <CreatorKit/IPSOTemperatureInstance.h>
 #import <CreatorKit/JsonInit.h>
 #import <CreatorKit/Link.h>
 #import <CreatorKit/OauthToken.h>

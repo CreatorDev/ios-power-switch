@@ -29,44 +29,53 @@
  *
  */
 
-#import "ObjectType.h"
+#import "CreatorKitFont.h"
+@import CoreText;
 
-@implementation ObjectType
+@implementation CreatorKitFont
 
-- (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
-    }
++ (nonnull NSArray<NSString *> *)fontNames {
+    return @[@"Roboto-Black",
+             @"Roboto-Italic",
+             @"Roboto-MediumItalic",
+             @"RobotoCondensed-Bold",
+             @"RobotoCondensed-LightItalic",
+             @"Roboto-BlackItalic",
+             @"Roboto-Light",
+             @"Roboto-Regular",
+             @"RobotoCondensed-BoldItalic",
+             @"RobotoCondensed-Regular",
+             @"Roboto-Bold",
+             @"Roboto-LightItalic",
+             @"Roboto-Thin",
+             @"RobotoCondensed-Italic",
+             @"Roboto-BoldItalic",
+             @"Roboto-Medium",
+             @"Roboto-ThinItalic",
+             @"RobotoCondensed-Light"];
+}
+
++ (nullable UIFont *)creatorKitFontWithName:(nonnull NSString *)name size:(CGFloat)size {
+    [[self class] registerFonts];
+    return [UIFont fontWithName:name size:size];
+}
+
++ (void)registerFonts {
+    static BOOL fontsRegistered = NO;
     
-    return mainStr;
-}
-
-#pragma mark - JsonInit protocol
-
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
-    if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
-            self = nil;
+    if (NO == fontsRegistered) {
+        for (NSString *font in [[self class] fontNames]) {
+            NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:font withExtension:@"ttf"];
+            if (url != nil) {
+                CFErrorRef error = nil;
+                CTFontManagerRegisterFontsForURL((CFURLRef)url, kCTFontManagerScopeNone, &error);
+                if (error != nil) {
+                    NSLog(@"ERROR: registering font: %@.", error);
+                }
+            }
         }
+        fontsRegistered = YES;
     }
-    return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
 }
 
 @end

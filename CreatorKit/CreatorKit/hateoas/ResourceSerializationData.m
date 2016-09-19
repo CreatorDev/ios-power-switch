@@ -29,44 +29,27 @@
  *
  */
 
-#import "ObjectType.h"
+#import "ResourceSerializationData.h"
 
-@implementation ObjectType
+@implementation ResourceSerializationData
 
 - (NSString *)description {
-    NSString *mainStr = [NSString stringWithFormat:@"ObjectType: (id: %@)", self.objectTypeID];
-    if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
-    }
-    
-    return mainStr;
+    return [NSString stringWithFormat:@"ResourceSerializationData: (serialisationName: %@, dataType: %@, localPropertyName: %@, mandatory: %@)", self.serialisationName, self.class, self.localPropertyName, self.mandatory ? @"YES": @"NO"];
 }
 
-#pragma mark - JsonInit protocol
-
-- (nullable instancetype)initWithJson:(nonnull id)json {
-    self = [super initWithJson:json];
+- (nonnull instancetype)initWithSerialisationName:(nonnull NSString *)serialisationName
+                                 dataType:(_Nonnull Class)dataType
+                        localPropertyName:(nonnull NSString *)localPropertyName
+                                mandatory:(BOOL)mandatory
+{
+    self = [super init];
     if (self) {
-        if (NO == [self parseObjectTypeIdJson:json]) {
-            self = nil;
-        }
+        _serialisationName = serialisationName;
+        _dataType = dataType;
+        _localPropertyName = localPropertyName;
+        _mandatory = mandatory;
     }
     return self;
-}
-
-#pragma mark - Private
-
-- (BOOL)parseObjectTypeIdJson:(nonnull id)json {
-    if ([json isKindOfClass:[NSDictionary class]]) {
-        if ([json[@"ObjectTypeID"] isKindOfClass:[NSString class]])
-        {
-            self.objectTypeID = json[@"ObjectTypeID"];
-        } else {
-            NSLog(@"%@ In ObjectType, wrong type of ObjectTypeID.", NSStringFromSelector(_cmd));
-            return NO;
-        }
-    }
-    return YES;
 }
 
 @end

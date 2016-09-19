@@ -30,10 +30,10 @@
  */
 
 #import "GatewaysTableViewController.h"
+#import <CreatorKit/CreatorKit.h>
 #import "AppDelegate.h"
 #import "AppData.h"
 #import "DataApi.h"
-#import <CreatorKit/LoginApi.h>
 #import "RelayDevicesViewController.h"
 #import "GatewayTableViewCell.h"
 
@@ -107,8 +107,6 @@
     cell.nameLabel.text = client.name;
     return cell;
 }
-
-#pragma mark - ProvideDeviceServerApiProtocol
 
 #pragma mark - Private
 

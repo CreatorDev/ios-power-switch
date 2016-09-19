@@ -34,7 +34,7 @@
 @implementation Api
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Api: %@", [super description]];
+    return [NSString stringWithFormat:@"Api: %@", super.description];
 }
 
 @end

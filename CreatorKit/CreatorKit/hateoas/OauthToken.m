@@ -36,7 +36,7 @@
 - (NSString *)description {
     NSString *mainStr = [NSString stringWithFormat:@"OauthToken: (type: %@, token: \"%@\", expire time: %@)", self.tokenType, self.accessToken, self.expireTime];
     if (self.links.count > 0) {
-        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, [super description]];
+        return [NSString stringWithFormat:@"{%@\n%@}", mainStr, super.description];
     }
     
     return mainStr;

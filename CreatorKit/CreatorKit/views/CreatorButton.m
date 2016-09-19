@@ -30,6 +30,7 @@
  */
 
 #import "CreatorButton.h"
+#import "CreatorKitFont.h"
 #import "GlobalStyle.h"
 
 @interface CreatorButton ()
@@ -45,7 +46,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.titleLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:self.titleLabel.font.pointSize];
+        self.titleLabel.font = [CreatorKitFont creatorKitFontWithName:@"Roboto-Regular" size:self.titleLabel.font.pointSize];
         [self setupBorder];
         _creatorEnabled = YES;
     }
