@@ -34,8 +34,6 @@
 #import "DataApi.h"
 #import "DataApiProtocol.h"
 
-static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
-
 @interface AppDelegate ()
 @property(strong, nonatomic, nonnull) AppData *appData;
 @end
@@ -78,8 +76,12 @@ static NSString *CreatorRedirectUrlScheme = @"io.creatordev.kit.powerswitch";
     return self.window.rootViewController;
 }
 
+- (NSString *)creatorClientId {
+    return @"600275e7-5476-4ff0-b49c-549686371a83";
+}
+
 - (NSString *)creatorRedirectUrlScheme {
-    return CreatorRedirectUrlScheme;
+    return @"io.creatordev.weatherstation";
 }
 
 - (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
