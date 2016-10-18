@@ -77,11 +77,11 @@
 }
 
 - (NSString *)creatorClientId {
-    return @"600275e7-5476-4ff0-b49c-549686371a83";
+    return @"1c6c7bee-b5d0-440c-9b5a-61f54a62c18d";
 }
 
 - (NSString *)creatorRedirectUrlScheme {
-    return @"io.creatordev.weatherstation";
+    return @"io.creatordev.kit.powerswitch";
 }
 
 - (void)presentMainViewControllerWithDeviceServerApi:(nonnull DeviceServerApi *)deviceServerApi {
