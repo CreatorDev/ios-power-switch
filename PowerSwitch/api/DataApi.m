@@ -152,7 +152,10 @@
     NSNumber *instanceId = nil;
     if ([json isKindOfClass:[NSDictionary class]]) {
         NSDictionary *jsonDict = (NSDictionary *)json;
-        instanceId = jsonDict[@"InstanceID"];
+        if ([jsonDict[@"InstanceID"] isKindOfClass:[NSString class]]) {
+            NSString *instId = jsonDict[@"InstanceID"];
+            instanceId = @(instId.integerValue);
+        }
     }
     if (instanceId == nil) {
         *error = [NSError errorWithDomain:@"io.creatordev.PowerSwitch.app" code:0 userInfo:@{@"description": @"InstanceID not present in IPSO object."}];
