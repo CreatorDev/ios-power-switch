@@ -73,8 +73,20 @@
         
         NSMutableArray<Client *> *newItems = [NSMutableArray new];
         for (Client *client in clients.items) {
-            if ([client.name hasPrefix:@"RelayDevice"]) {
-                [newItems addObject:client];
+            ObjectTypes *objectTypes = [weakSelf.deviceServerApi objectTypesForClient:client error:&error];
+            if (error || objectTypes == nil) {
+                if (failure) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        failure(error);
+                    }];
+                }
+                return;
+            }
+            for (ObjectType *objType in objectTypes.items) {
+                if ([objType.objectTypeID isEqualToString:[IPSODigitalOutputInstance IPSOObjectID]]) {
+                    [newItems addObject:client];
+                    break;
+                }
             }
         }
         
